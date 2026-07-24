@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop Videos - Farhan Mughal Auto Electrician</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== VIDEOS HERO ===== */
+    .videos-hero {
+      position: relative;
+      min-height: 62vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 8% 60px;
+    }
+
+    .videos-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      filter: brightness(0.5);
+    }
+
+    /* ===== VIDEO GRID ===== */
+    .video-reel-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 26px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .video-reel-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 320px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    }
+
+    .video-reel-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(18, 44, 87, 0.15);
+    }
+
+    .video-reel-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-reel-item {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-reel-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      background: rgba(18, 44, 87, 0.78);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+
+    .video-reel-caption {
+      padding: 20px 22px 24px;
+    }
+
+    .video-reel-caption h3 {
+      font-size: 16px;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .video-reel-caption p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .video-reel-card {
+        max-width: 340px;
+      }
+    }
+
+    /* Light-background outline button variant */
+    .btn.outline-dark {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--dark);
+      box-shadow: none;
+    }
+
+    .btn.outline-dark:hover {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+
+    /* ===== CTA CARD ===== */
+    .cta-card {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      align-items: center;
+    }
+
+    .cta-card .btn {
+      text-decoration: none;
+    }
+
+    .cta-card .hero-buttons {
+      justify-content: center;
+      margin: 22px 0 0;
+    }
+
+    @media (max-width: 768px) {
+      .videos-hero {
+        padding: 90px 5% 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-left">
+      📞 +92 341 0576603
+    </div>
+    <div class="top-bar-right">
+      📍 Main Nangi Bus-Station, Mirpur, New Mirpur City, 10250
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="logo">
+      FM <span>Auto Electrician</span>
+    </div>
+
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="tel:+923410576603" class="btn" style="text-decoration:none; color:white;">Call Us</a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar" id="sidebar" aria-hidden="true">
+    <div class="close-btn" id="closeBtn" role="button" tabindex="0" aria-label="Close menu">✕</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="videos.html">Videos</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="tel:+923410576603" class="call-btn">Call Us</a>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- VIDEOS HERO -->
+  <div class="videos-hero">
+    <div class="videos-hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="tagline">🎥 See The Work Before You Book</p>
+      <h1>Real Repairs. Real Workshop.<br>Real Results.</h1>
+      <p class="subtext">
+        Watch our expert team handle diagnostics, mechanical repairs, and electrical work up close —
+        honest craftsmanship, no shortcuts.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="index.html#contact" class="btn primary" style="text-decoration:none;">Book Appointment</a>
+        <a href="tel:+923410576603" class="btn outline" style="text-decoration:none;">Call Now</a>
+      </div>
+
+      <div class="hero-stats">
+        <div><strong>10+</strong><span>Years Experience</span></div>
+        <div><strong>500+</strong><span>Cars Fixed</span></div>
+        <div><strong>4.9★</strong><span>Customer Rating</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <p class="services-eyebrow">Workshop In Action</p>
+    <h2 class="services-heading">Watch The Work</h2>
+    <p class="services-subtext">
+      A closer look at how we diagnose, repair, and maintain vehicles — straight from the workshop floor.
+    </p>
+
+    <div class="video-reel-grid">
+
+      <div class="video-reel-card">
+        <div class="video-reel-frame">
+          <span class="video-reel-tag">Diagnostics</span>
+          <video controls playsinline class="video-reel-item">
+            <source src="WhatsApp Video 2026-06-18 at 1.01.29 AM.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-reel-caption">
+          <h3>Computerized Machinery Diagnostics</h3>
+          <p>Scanning and identifying faults using modern diagnostic tools before any repair begins.</p>
+        </div>
+      </div>
+
+      <div class="video-reel-card">
+        <div class="video-reel-frame">
+          <span class="video-reel-tag">Electrician</span>
+          <video controls playsinline class="video-reel-item">
+            <source src="video2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-reel-caption">
+          <h3>Auto Electrical Repair</h3>
+          <p>Wiring, battery, and lighting issues traced and fixed with precision by our electrician.</p>
+        </div>
+      </div>
+
+      <div class="video-reel-card">
+        <div class="video-reel-frame">
+          <span class="video-reel-tag">Mechanical</span>
+          <video controls playsinline class="video-reel-item">
+            <source src="video3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-reel-caption">
+          <h3>Mechanical & Auto Gear Servicing</h3>
+          <p>Hands-on gearbox and mechanical repair work carried out with care and experience.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BRANDS MARQUEE (matches homepage) -->
+  <section id="brands" class="brands-marquee-section">
+    <h2 class="brands-marquee-heading">We Service All Foreign and Domestic Makes</h2>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>Toyota</span>
+        <span>Honda</span>
+        <span>Suzuki</span>
+        <span>Hyundai</span>
+        <span>Kia</span>
+        <span>MG</span>
+        <span>Daihatsu</span>
+        <span>Nissan</span>
+        <span>Changan</span>
+        <span>Proton</span>
+        <span>Toyota</span>
+        <span>Honda</span>
+        <span>Suzuki</span>
+        <span>Hyundai</span>
+        <span>Kia</span>
+        <span>MG</span>
+        <span>Daihatsu</span>
+        <span>Nissan</span>
+        <span>Changan</span>
+        <span>Proton</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="video-cta">
+    <div class="contact-appointment cta-card">
+      <h2>Liked What You Saw?</h2>
+      <p class="sub-text">Bring your car in and experience the same honest, expert service for yourself.</p>
+      <div class="hero-buttons">
+        <a href="index.html#contact" class="btn primary">Book Appointment</a>
+        <a href="tel:+923410576603" class="btn outline-dark">Call +92 341 0576603</a>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" class="whatsapp-float"
+    target="_blank" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
+      <path
+        d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.77-1.833A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.354l-.355-.21-4.61 1.088 1.104-4.49-.232-.368A9.71 9.71 0 0 1 5.25 15c0-5.937 4.816-10.75 10.754-10.75 5.937 0 10.746 4.813 10.746 10.75 0 5.938-4.809 10.75-10.746 10.75zm5.895-8.05c-.322-.161-1.905-.94-2.2-1.048-.295-.108-.51-.161-.724.161-.214.322-.83 1.048-1.018 1.263-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.59-1.598-.957-.853-1.603-1.907-1.791-2.229-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.214-.322.322-.537.107-.215.053-.403-.027-.564-.08-.161-.724-1.745-.992-2.39-.261-.628-.526-.543-.724-.553l-.617-.011c-.215 0-.564.08-.859.403-.295.322-1.126 1.1-1.126 2.684 0 1.584 1.153 3.115 1.314 3.33.161.215 2.267 3.463 5.494 4.858.768.332 1.367.53 1.834.678.771.245 1.472.21 2.027.128.618-.092 1.905-.78 2.174-1.532.268-.752.268-1.397.188-1.532-.08-.134-.295-.215-.617-.376z" />
+    </svg>
+  </a>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-title">Farhan Mughal Auto Electrician</div>
+        <p>Trusted car repair service with expert mechanics.</p>
+      </div>
+      <div>
+        <div class="footer-title">Location</div>
+        <p>Main Nangi Bus-Station, Mirpur, New Mirpur City, 10250</p>
+      </div>
+      <div>
+        <div class="footer-title">Contact</div>
+        <p>+92 341 0576603</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Farhan Mughal Auto Electrician
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openMenu() {
+      sidebar.classList.add("open");
+      overlay.classList.add("show");
+      document.body.classList.add("menu-open");
+      sidebar.setAttribute("aria-hidden", "false");
+    }
+
+    function closeMenu() {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
+      document.body.classList.remove("menu-open");
+      sidebar.setAttribute("aria-hidden", "true");
+    }
+
+    menuToggle.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    closeBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") closeMenu();
+    });
+    overlay.addEventListener("click", closeMenu);
+    sidebar.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+    /* SECTION REVEAL - matches main site behaviour */
+    const sections = document.querySelectorAll("section");
+    const sObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.12 });
+    sections.forEach((s) => sObs.observe(s));
+
+    /* NAVBAR SCROLL STATE */
+    const navbarEl = document.querySelector(".navbar");
+    function handleNavScroll() {
+      if (window.scrollY > 40) {
+        navbarEl.classList.add("scrolled");
+      } else {
+        navbarEl.classList.remove("scrolled");
+      }
+    }
+    window.addEventListener("scroll", handleNavScroll, { passive: true });
+    handleNavScroll();
+  </script>
+
+</body>
+
+</html>

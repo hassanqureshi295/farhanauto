@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auto Electrical Repair & Wiring Diagnostics | Farhan Mughal Auto Electrician</title>
+
+  <!--
+    ============================================================================
+    SERVICE PAGE TEMPLATE — HOW TO REUSE THIS FOR EACH SERVICE CARD
+    ============================================================================
+    This page links your real style.css, so it automatically matches the rest
+    of the site (colors, fonts, buttons, cards). Only the <style> block near
+    the bottom of <head> contains page-specific additions — everything else
+    is built from classes that already exist in style.css.
+
+    1. Duplicate this file and rename it, e.g. brake-service.html
+    2. Replace every block marked with a 🔧 comment — that's the only content
+       that changes between services. Structure/CSS/JS stay as-is.
+    3. Update the <title> tag and the breadcrumb / header copy.
+    4. Swap the photo URLs for real workshop photos of that specific service.
+    5. Link this file from the matching .service-card-v2 on index.html, e.g.
+       <div class="service-card-v2" onclick="location.href='brake-service.html'">
+    ============================================================================
+  -->
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       PAGE-SPECIFIC ADDITIONS ONLY
+       (everything else — navbar, buttons, cards, footer, gallery —
+        comes straight from style.css so it matches the rest of the site)
+       ============================================================ */
+
+    /* ---------- BREADCRUMB ---------- */
+    .breadcrumb-v2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb-v2 a { color: rgba(255, 255, 255, 0.75); text-decoration: none; transition: color .2s; }
+    .breadcrumb-v2 a:hover { color: var(--primary); }
+    .breadcrumb-v2 .current { color: #fff; font-weight: 500; }
+
+    /* ---------- PAGE HEADER (dark navy, mirrors arsenal/gallery inverted sections) ---------- */
+    .page-header {
+      background: var(--dark);
+      padding: 130px 8% 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 85% 20%, rgba(255, 90, 54, 0.14), transparent 55%);
+      pointer-events: none;
+    }
+    .page-header-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #FFB199;
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.12;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .page-header .lead {
+      color: #cbd5e1;
+      font-size: 16px;
+      max-width: 480px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .header-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 34px; }
+    .header-facts { display: flex; gap: 30px; flex-wrap: wrap; }
+    .header-facts div { text-align: left; }
+    .header-facts strong { font-size: 20px; display: block; color: #fff; }
+    .header-facts span { font-size: 12px; color: #cbd5e1; }
+
+    /* Diagnostic readout card — signature element, built entirely from
+       existing .card / .status-badge / .timing-row patterns in style.css */
+    .scan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 25px 55px rgba(8, 14, 28, 0.35);
+    }
+    .scan-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .scan-card-head h3 { font-size: 15px; color: var(--dark); }
+    .scan-card-head span { font-size: 12px; color: var(--muted); font-weight: 600; }
+    .scan-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+      gap: 10px;
+    }
+    .scan-row:last-of-type { border-bottom: none; }
+    .scan-row span { color: var(--muted); font-size: 13.5px; }
+    .scan-card-photo {
+      margin-top: 18px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .scan-card-photo img { width: 100%; height: 140px; object-fit: cover; display: block; }
+
+    /* ---------- SECTION HEADINGS (reused rhythm: eyebrow / heading / subtext) ---------- */
+    .svc-eyebrow {
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .svc-heading { font-size: 34px; font-weight: 800; color: var(--dark); margin-bottom: 16px; }
+    .svc-subtext { color: var(--muted); max-width: 640px; line-height: 1.7; font-size: 15px; margin-bottom: 44px; }
+    .svc-section { text-align: center; }
+    .svc-section.align-left { text-align: left; }
+
+    /* ---------- OVERVIEW ---------- */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      text-align: left;
+    }
+    .overview-grid img { border-radius: 16px; border: 1px solid var(--border); width: 100%; height: 380px; object-fit: cover; }
+    .overview-text p { color: var(--muted); line-height: 1.8; margin-bottom: 18px; font-size: 15.5px; }
+    .overview-text p:last-child { margin-bottom: 0; }
+
+    /* ---------- SYMPTOM GRID (reuses service-card-v2 / service-icon-v2 exactly) ---------- */
+    .symptom-grid-v2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      text-align: left;
+    }
+    @media (max-width: 900px) { .symptom-grid-v2 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .symptom-grid-v2 { grid-template-columns: 1fr; } }
+
+    /* ---------- PROCESS (genuine ordered sequence) ---------- */
+    .process-list { max-width: 780px; margin: 0 auto; text-align: left; }
+    .process-step {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 24px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+    }
+    .process-step:last-child { border-bottom: 1px solid var(--border); }
+    .process-num { font-size: 30px; font-weight: 800; color: var(--primary); line-height: 1; }
+    .process-step h3 { font-size: 18px; color: var(--dark); margin-bottom: 8px; }
+    .process-step p { color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+
+    /* ---------- INCLUDED / PRICING ---------- */
+    .included-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; text-align: left; }
+    @media (max-width: 900px) { .included-grid { grid-template-columns: 1fr; } }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .checklist li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--dark); }
+    .checklist li::before {
+      content: "✓";
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255, 90, 54, 0.1);
+      color: var(--primary);
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .checklist li span { color: var(--muted); }
+
+    /* ---------- FAQ ---------- */
+    .faq-list-v2 { max-width: 740px; margin: 0 auto; text-align: left; }
+    .faq-item-v2 { border-top: 1px solid var(--border); }
+    .faq-item-v2:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q-v2 {
+      width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0;
+      background: none; border: none; cursor: pointer;
+      font-size: 15.5px; font-weight: 600; color: var(--dark); text-align: left;
+    }
+    .faq-q-v2 .plus { color: var(--primary); font-size: 20px; transition: transform .25s ease; flex-shrink: 0; margin-left: 12px; }
+    .faq-item-v2.open .plus { transform: rotate(45deg); }
+    .faq-a-v2 { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq-a-v2 p { color: var(--muted); font-size: 14.5px; line-height: 1.7; padding-bottom: 20px; }
+
+    /* ---------- RELATED (reuses services-grid-v2 / service-card-v2 exactly) ---------- */
+    a.service-card-v2 { text-decoration: none; display: block; }
+
+    /* ---------- CTA (mirrors contact-appointment card) ---------- */
+    .svc-cta {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .svc-cta h2 { font-size: 26px; color: var(--dark); margin-bottom: 8px; }
+    .svc-cta p { color: var(--muted); font-size: 15px; }
+    .svc-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .page-header-grid { grid-template-columns: 1fr; }
+      .overview-grid { grid-template-columns: 1fr; }
+      .overview-grid img { order: -1; height: 260px; }
+      .header-facts { gap: 22px; }
+    }
+    @media (max-width: 600px) {
+      .page-header { padding: 110px 5% 70px; }
+      .svc-cta { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-left">📞 +92 341 0576603</div>
+    <div class="top-bar-right">📍 Main Nangi Bus-Station, Mirpur, New Mirpur City, 10250</div>
+  </div>
+
+  <!-- NAV (identical to index.html) -->
+  <div class="navbar">
+    <div class="logo">FM <span>Auto Electrician</span></div>
+
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="tel:+923410576603" style="color: white;" class="btn">Call Us</a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar" id="sidebar" aria-hidden="true">
+    <div class="close-btn" id="closeBtn" role="button" tabindex="0" aria-label="Close menu">✕</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="videos.html">Videos</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="tel:+923410576603" class="call-btn">Call Us</a>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- PAGE HEADER (dark navy, same rhythm as why-us / gallery sections) -->
+  <div class="page-header">
+    <div class="page-header-grid">
+      <div>
+        <div class="breadcrumb-v2">
+          <a href="index.html">Home</a> <span>/</span>
+          <a href="index.html#services">Services</a> <span>/</span>
+          <!-- 🔧 CURRENT SERVICE NAME -->
+          <span class="current">Auto Electrical Repair</span>
+        </div>
+
+        <!-- 🔧 SERVICE CATEGORY TAG -->
+        <p class="page-header-eyebrow">🔧 Electrical Diagnostics Service</p>
+
+        <!-- 🔧 SERVICE TITLE -->
+        <h1>Auto Electrical Repair &amp; Wiring Diagnostics</h1>
+
+        <!-- 🔧 SERVICE LEAD PARAGRAPH -->
+        <p class="lead">
+          From a flickering dashboard light to a car that won't start, we trace electrical
+          faults to their root cause and fix them properly — not just patch the symptom.
+        </p>
+
+        <div class="header-actions">
+          <a href="tel:+923410576603" class="btn primary">Book This Service</a>
+          <a href="https://wa.me/923410576603" class="btn outline">WhatsApp Us</a>
+        </div>
+
+        <!-- 🔧 QUICK FACTS -->
+        <div class="header-facts">
+          <div><strong>45–90 min</strong><span>Typical Duration</span></div>
+          <div><strong>All Makes</strong><span>Vehicles Covered</span></div>
+          <div><strong>90 Day</strong><span>Workmanship Warranty</span></div>
+        </div>
+      </div>
+
+      <!-- SIGNATURE ELEMENT: diagnostic readout, built from status-badge / card patterns -->
+      <div class="scan-card">
+        <div class="scan-card-head">
+          <h3>Live Diagnostic Read</h3>
+          <span>FM-01</span>
+        </div>
+        <div class="scan-row">
+          <span>Battery Voltage</span>
+          <span class="status-badge open"><span class="status-dot dot-open"></span>12.6V Normal</span>
+        </div>
+        <div class="scan-row">
+          <span>Alternator Output</span>
+          <span class="status-badge open"><span class="status-dot dot-open"></span>14.2V Normal</span>
+        </div>
+        <div class="scan-row">
+          <span>Wiring Circuit</span>
+          <span class="status-badge closed"><span class="status-dot dot-closed"></span>Fault Detected</span>
+        </div>
+        <div class="scan-card-photo">
+          <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=700&q=80" alt="Technician running electrical diagnostics on a vehicle">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="svc-section align-left" style="padding: 90px 8%;">
+    <span class="svc-eyebrow">Overview</span>
+    <h2 class="svc-heading">What This Service Covers</h2>
+
+    <div class="overview-grid" style="margin-top: 30px;">
+      <!-- 🔧 OVERVIEW COPY -->
+      <div class="overview-text">
+        <p>
+          Modern vehicles run dozens of interconnected electrical circuits — from the
+          starter and charging system to sensors, lighting, and infotainment. When one
+          circuit fails, it rarely shows up as a single obvious symptom.
+        </p>
+        <p>
+          We start every job with a full circuit trace using calibrated diagnostic
+          equipment, not guesswork. Once the fault is isolated, we repair the wiring,
+          connector, or component directly — reinsulated, tested under load, and
+          verified before your car leaves the bay.
+        </p>
+        <p>
+          This applies to intermittent faults too: flickering lights, dead sockets,
+          dashboard warnings that come and go, or a battery that won't hold charge.
+        </p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=900&q=80" alt="Close-up of vehicle wiring harness being repaired">
+    </div>
+  </section>
+
+  <!-- SIGNS YOU NEED THIS (reuses service-card-v2 / service-icon-v2) -->
+  <section class="svc-section" style="padding: 90px 8%; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <span class="svc-eyebrow">Recognize The Problem</span>
+    <h2 class="svc-heading">Signs You Need This Service</h2>
+    <p class="svc-subtext" style="margin-left:auto; margin-right:auto;">If you're noticing any of the below, it's worth getting checked before it strands you.</p>
+
+    <!-- 🔧 SYMPTOM CARDS — 3, 6, or 9 depending on service -->
+    <div class="symptom-grid-v2">
+      <div class="service-card-v2">
+        <div class="service-icon-v2">💡</div>
+        <h3>Flickering Dashboard Lights</h3>
+        <p>Warning icons or gauges that flicker, dim, or reset randomly while driving.</p>
+      </div>
+      <div class="service-card-v2">
+        <div class="service-icon-v2">🔋</div>
+        <h3>Battery Drains Overnight</h3>
+        <p>Car struggles to start in the morning despite a battery that tested fine before.</p>
+      </div>
+      <div class="service-card-v2">
+        <div class="service-icon-v2">⚡</div>
+        <h3>Dead Power Outlets or Sockets</h3>
+        <p>USB ports, cigarette lighter, or power windows stop responding intermittently.</p>
+      </div>
+      <div class="service-card-v2">
+        <div class="service-icon-v2">🔧</div>
+        <h3>Burning Smell Near Dashboard</h3>
+        <p>A faint electrical or burning odor, especially after extended use.</p>
+      </div>
+      <div class="service-card-v2">
+        <div class="service-icon-v2">🚨</div>
+        <h3>Check Engine Light On</h3>
+        <p>Persistent check engine or battery warning light with no clear cause.</p>
+      </div>
+      <div class="service-card-v2">
+        <div class="service-icon-v2">🎵</div>
+        <h3>Static in Audio or Sensors</h3>
+        <p>Interference in the stereo, parking sensors, or camera feed while the engine runs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS (genuine ordered sequence — numbering is justified) -->
+  <section class="svc-section" style="padding: 90px 8%;">
+    <span class="svc-eyebrow">Our Process</span>
+    <h2 class="svc-heading">How We Diagnose &amp; Repair</h2>
+    <p class="svc-subtext" style="margin-left:auto; margin-right:auto;">The same four-step sequence for every electrical job, so nothing gets guessed at.</p>
+
+    <!-- 🔧 PROCESS STEPS — keep as a genuine ordered sequence -->
+    <div class="process-list">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div>
+          <h3>Circuit Trace &amp; Scan</h3>
+          <p>We connect diagnostic equipment and manually trace the affected circuit to pinpoint the exact fault location.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div>
+          <h3>Confirm the Root Cause</h3>
+          <p>We isolate whether it's a wiring break, corroded connector, faulty relay, or component failure — and show you.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div>
+          <h3>Repair &amp; Reinsulate</h3>
+          <p>Faulty sections are repaired to OEM standard, reinsulated, and secured so the fix holds long-term.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div>
+          <h3>Load Test &amp; Verify</h3>
+          <p>We test the full circuit under real load and re-scan before handing the car back to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUDED / PRICING -->
+  <section class="svc-section" style="padding: 90px 8%; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <span class="svc-eyebrow">Transparent Pricing</span>
+    <h2 class="svc-heading">What's Included</h2>
+
+    <div class="included-grid" style="margin-top: 30px;">
+      <!-- 🔧 CHECKLIST ITEMS -->
+      <ul class="checklist">
+        <li><span><b>Full diagnostic scan</b> — battery, alternator, and circuit test</span></li>
+        <li><span><b>Fault isolation</b> — pinpointed to the exact wire or component</span></li>
+        <li><span><b>Written explanation</b> before any repair work begins</span></li>
+        <li><span><b>Repair, reinsulation &amp; load testing</b> included in quoted price</span></li>
+        <li><span><b>90-day workmanship warranty</b> on all electrical repairs</span></li>
+      </ul>
+
+      <div class="timing-card">
+        <div class="timing-card-head">
+          <div class="timing-icon">💬</div>
+          <h3>Get an Honest Quote</h3>
+        </div>
+        <p style="color: var(--muted); font-size: 13.5px; margin-bottom: 6px;">Diagnostics first, price after — never the other way around.</p>
+        <a href="tel:+923410576603" class="btn primary" style="width: 100%; margin-top: 10px;">Call for a Quote</a>
+        <a href="https://wa.me/923410576603" class="btn outline" style="width: 100%;">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY (reuses gallery-section-v2 exactly, same JS slider) -->
+  <section id="svc-gallery" class="gallery-section-v2">
+    <div class="gallery-header-v2">
+      <h2 class="gallery-heading-v2">This Service In Action</h2>
+      <div class="gallery-nav-v2">
+        <button class="gallery-arrow-v2" id="svcGalleryPrev" aria-label="Previous photo">‹</button>
+        <button class="gallery-arrow-v2" id="svcGalleryNext" aria-label="Next photo">›</button>
+      </div>
+    </div>
+
+    <!-- 🔧 4 PHOTOS SPECIFIC TO THIS SERVICE -->
+    <div class="gallery-track-v2" id="svcGalleryTrack">
+      <div class="gallery-slide-v2 wide">
+        <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=900&q=80" alt="Wiring repair in progress">
+        <div class="gallery-caption-v2">Circuit Trace</div>
+      </div>
+      <div class="gallery-slide-v2">
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80" alt="Diagnostic scanner connected to vehicle">
+        <div class="gallery-caption-v2">Full Scan</div>
+      </div>
+      <div class="gallery-slide-v2">
+        <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=700&q=80" alt="Technician testing electrical component">
+        <div class="gallery-caption-v2">Bench Test</div>
+      </div>
+      <div class="gallery-slide-v2 wide">
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=900&q=80" alt="Completed repair being verified">
+        <div class="gallery-caption-v2">Final Check</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="svc-section" style="padding: 90px 8%;">
+    <span class="svc-eyebrow">Common Questions</span>
+    <h2 class="svc-heading">FAQ</h2>
+
+    <!-- 🔧 FAQ Q&A — 3 to 5 per service -->
+    <div class="faq-list-v2" style="margin-top: 30px;" id="faqList">
+      <div class="faq-item-v2">
+        <button class="faq-q-v2">How long does an electrical diagnosis take? <span class="plus">+</span></button>
+        <div class="faq-a-v2"><p>Most faults are isolated within 45–90 minutes. Intermittent faults that only appear under specific conditions can take longer to reproduce safely.</p></div>
+      </div>
+      <div class="faq-item-v2">
+        <button class="faq-q-v2">Will I be told the price before any repair starts? <span class="plus">+</span></button>
+        <div class="faq-a-v2"><p>Yes. We always diagnose and explain the fault first, then quote the repair — you approve it before any work begins.</p></div>
+      </div>
+      <div class="faq-item-v2">
+        <button class="faq-q-v2">Do you work on all car brands? <span class="plus">+</span></button>
+        <div class="faq-a-v2"><p>We service all foreign and domestic makes, including Toyota, Honda, Suzuki, Hyundai, Kia, and more.</p></div>
+      </div>
+      <div class="faq-item-v2">
+        <button class="faq-q-v2">Is there a warranty on electrical repairs? <span class="plus">+</span></button>
+        <div class="faq-a-v2"><p>Yes, every electrical repair comes with a 90-day workmanship warranty.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES (reuses services-grid-v2 / service-card-v2 exactly) -->
+  <section class="svc-section" style="padding: 90px 8%; background: var(--card); border-top: 1px solid var(--border);">
+    <span class="svc-eyebrow">You May Also Need</span>
+    <h2 class="svc-heading">Related Services</h2>
+
+    <!-- 🔧 LINK EACH CARD TO ITS OWN SERVICE PAGE -->
+    <div class="services-grid-v2" style="margin-top: 30px;">
+      <a href="battery.html" class="service-card-v2">
+        <div class="service-icon-v2">🔋</div>
+        <h3>Battery</h3>
+        <p>Test &amp; replacement</p>
+      </a>
+      <a href="check-engine.html" class="service-card-v2">
+        <div class="service-icon-v2">🚨</div>
+        <h3>Check Engine</h3>
+        <p>Diagnostics &amp; repair</p>
+      </a>
+      <a href="ac-repair.html" class="service-card-v2">
+        <div class="service-icon-v2">❄️</div>
+        <h3>A/C Repair</h3>
+        <p>Air conditioning service</p>
+      </a>
+      <a href="scheduled-maintenance.html" class="service-card-v2">
+        <div class="service-icon-v2">🛠️</div>
+        <h3>Scheduled Maintenance</h3>
+        <p>30k / 60k / 90k service</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="svc-section" style="padding: 30px 8% 100px;">
+    <div class="svc-cta">
+      <div>
+        <h2>Ready to get it fixed properly?</h2>
+        <p>Call, WhatsApp, or drive in — same-day diagnostics available most days.</p>
+      </div>
+      <div class="svc-cta-actions">
+        <a href="tel:+923410576603" class="btn primary">Call +92 341 0576603</a>
+        <a href="index.html#contact" class="btn outline" style="color: var(--dark); border-color: var(--border);">Book an Appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" class="whatsapp-float"
+    target="_blank" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
+      <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.77-1.833A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.354l-.355-.21-4.61 1.088 1.104-4.49-.232-.368A9.71 9.71 0 0 1 5.25 15c0-5.937 4.816-10.75 10.754-10.75 5.937 0 10.746 4.813 10.746 10.75 0 5.938-4.809 10.75-10.746 10.75zm5.895-8.05c-.322-.161-1.905-.94-2.2-1.048-.295-.108-.51-.161-.724.161-.214.322-.83 1.048-1.018 1.263-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.59-1.598-.957-.853-1.603-1.907-1.791-2.229-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.214-.322.322-.537.107-.215.053-.403-.027-.564-.08-.161-.724-1.745-.992-2.39-.261-.628-.526-.543-.724-.553l-.617-.011c-.215 0-.564.08-.859.403-.295.322-1.126 1.1-1.126 2.684 0 1.584 1.153 3.115 1.314 3.33.161.215 2.267 3.463 5.494 4.858.768.332 1.367.53 1.834.678.771.245 1.472.21 2.027.128.618-.092 1.905-.78 2.174-1.532.268-.752.268-1.397.188-1.532-.08-.134-.295-.215-.617-.376z" />
+    </svg>
+  </a>
+
+  <!-- FOOTER (identical to index.html) -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-title">Farhan Mughal Auto Electrician</div>
+        <p>Trusted car repair service with expert mechanics.</p>
+      </div>
+      <div>
+        <div class="footer-title">Location</div>
+        <p>Main Nangi Bus-Station, Mirpur, New Mirpur City, 10250</p>
+      </div>
+      <div>
+        <div class="footer-title">Contact</div>
+        <p>+92 341 0576603</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Farhan Mughal Auto Electrician</div>
+  </footer>
+
+  <script>
+    /* SECTION REVEAL — identical pattern to index.html */
+    const sections = document.querySelectorAll("section");
+    const sObs = new IntersectionObserver(e => {
+      e.forEach(x => { if (x.isIntersecting) x.target.classList.add("show"); });
+    }, { threshold: 0.15 });
+    sections.forEach(s => sObs.observe(s));
+
+    /* MOBILE MENU */
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openMenu() {
+      sidebar.classList.add("open");
+      overlay.classList.add("show");
+      document.body.classList.add("menu-open");
+      sidebar.setAttribute("aria-hidden", "false");
+    }
+    function closeMenu() {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
+      document.body.classList.remove("menu-open");
+      sidebar.setAttribute("aria-hidden", "true");
+    }
+    menuToggle.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    closeBtn.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") closeMenu(); });
+    overlay.addEventListener("click", closeMenu);
+    sidebar.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+
+    /* NAVBAR SCROLL STATE */
+    const navbarEl = document.querySelector(".navbar");
+    function handleNavScroll() {
+      navbarEl.classList.toggle("scrolled", window.scrollY > 40);
+    }
+    window.addEventListener("scroll", handleNavScroll, { passive: true });
+    handleNavScroll();
+
+    /* GALLERY SLIDER — identical pattern to index.html */
+    const galleryTrack = document.getElementById("svcGalleryTrack");
+    const galleryPrev = document.getElementById("svcGalleryPrev");
+    const galleryNext = document.getElementById("svcGalleryNext");
+    if (galleryTrack && galleryPrev && galleryNext) {
+      const scrollGallery = (dir) => {
+        const slide = galleryTrack.querySelector(".gallery-slide-v2");
+        const amount = slide ? slide.getBoundingClientRect().width + 14 : 300;
+        galleryTrack.scrollBy({ left: dir * amount, behavior: "smooth" });
+      };
+      galleryPrev.addEventListener("click", () => scrollGallery(-1));
+      galleryNext.addEventListener("click", () => scrollGallery(1));
+    }
+
+    /* FAQ ACCORDION */
+    document.querySelectorAll(".faq-q-v2").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item-v2");
+        const answer = item.querySelector(".faq-a-v2");
+        const isOpen = item.classList.contains("open");
+
+        document.querySelectorAll(".faq-item-v2.open").forEach(openItem => {
+          if (openItem !== item) {
+            openItem.classList.remove("open");
+            openItem.querySelector(".faq-a-v2").style.maxHeight = null;
+          }
+        });
+
+        item.classList.toggle("open", !isOpen);
+        answer.style.maxHeight = !isOpen ? answer.scrollHeight + "px" : null;
+      });
+    });
+  </script>
+
+</body>
+</html>
