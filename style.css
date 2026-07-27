@@ -22,6 +22,11 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
+    /* Prevents the browser's automatic "scroll anchoring" from nudging the
+       page when a dynamically-inserted element (like the MapLibre canvas)
+       changes size after load — this is what could cause an unwanted
+       auto-scroll toward the map/contact section. */
+    overflow-anchor: none;
   }
 
   body {
@@ -2363,7 +2368,10 @@ section.show .feature-ride-img {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  overflow: hidden;
+  /* NOTE: intentionally NOT overflow:hidden here — MapLibre appends its
+     popup as a child of #shopMap, so hiding overflow on this wrapper was
+     clipping the popup card whenever it opened near an edge. Rounding is
+     handled on the header/canvas individually below instead. */
 }
 
 .shop-map-header {
@@ -2374,6 +2382,7 @@ section.show .feature-ride-img {
   flex-wrap: wrap;
   padding: 20px 24px;
   border-bottom: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
 }
 
 .shop-map-header h3 {
@@ -2418,11 +2427,63 @@ section.show .feature-ride-img {
 .shop-map-canvas {
   width: 100%;
   height: 420px;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden; /* safe here — only the canvas is inside this box */
+  position: relative;
+}
+
+/* The map's own canvas element needs the rounding too, since it's a
+   sibling of the popup layer inside #shopMap, not a clipped parent of it */
+.shop-map-canvas .maplibregl-canvas {
+  border-radius: 0 0 16px 16px;
+}
+
+/* Always-visible info chip — key info readable at a glance, no tap needed */
+.shop-map-chip {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 248, 237, 0.92);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark);
+  box-shadow: 0 6px 16px rgba(18, 44, 87, 0.12);
+  max-width: calc(100% - 24px);
+}
+
+.shop-map-chip-sep { color: var(--border); }
+
+@media (max-width: 480px) {
+  .shop-map-chip {
+    font-size: 10.5px;
+    padding: 5px 9px;
+    gap: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @media (max-width: 768px) {
   .shop-map-canvas { height: 300px; }
   .shop-map-header { padding: 16px 18px; }
+  .shop-map-controls { width: 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .shop-map-canvas { height: 260px; }
+  .shop-map-header { padding: 14px 16px; gap: 10px; }
+  .shop-map-header h3 { font-size: 15.5px; }
+  .shop-map-header p { font-size: 12px; }
+  .map-ctrl-btn { width: 34px; height: 34px; font-size: 14px; }
 }
 
 /* Custom marker */
@@ -2465,74 +2526,91 @@ section.show .feature-ride-img {
 }
 
 .shop-popup {
-  width: 240px;
+  width: 190px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 45px rgba(18, 44, 87, 0.18);
+  box-shadow: 0 16px 34px rgba(18, 44, 87, 0.18);
 }
 
 .shop-popup img {
   width: 100%;
-  height: 100px;
+  height: 70px;
   object-fit: cover;
   display: block;
 }
 
-.shop-popup-body { padding: 14px; }
+.shop-popup-body { padding: 10px; }
 
 .shop-popup-eyebrow {
   color: var(--primary);
   font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 10.5px;
+  letter-spacing: 0.6px;
+  font-size: 9px;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .shop-popup-body h4 {
-  font-size: 14.5px;
+  font-size: 12.5px;
   color: var(--dark);
-  line-height: 1.3;
-  margin-bottom: 8px;
+  line-height: 1.25;
+  margin-bottom: 6px;
 }
 
 .shop-popup-rating {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12.5px;
+  gap: 5px;
+  font-size: 11px;
   color: var(--dark);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
 }
 
-.shop-popup-rating .stars-inline { font-size: 12px; }
+.shop-popup-rating .stars-inline { font-size: 10px; }
 
-.shop-popup-muted { color: var(--muted); }
+.shop-popup-muted { color: var(--muted); font-size: 10px; }
+
+.shop-popup .status-badge {
+  padding: 3px 8px !important;
+  font-size: 10.5px !important;
+  margin: 6px 0 8px !important;
+}
 
 .shop-popup-actions {
   display: flex;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 6px;
+  margin-top: 2px;
 }
 
 .shop-popup-btn {
   flex: 1;
-  padding: 9px 0 !important;
-  font-size: 12px !important;
+  padding: 7px 0 !important;
+  font-size: 11px !important;
   text-align: center;
   text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.shop-popup-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
 }
 
 .shop-popup-icon-btn {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  font-size: 13px;
+  border-radius: 7px;
   border: 1px solid var(--border);
   color: var(--dark);
   text-decoration: none;
@@ -2543,4 +2621,17 @@ section.show .feature-ride-img {
   background: var(--primary);
   border-color: var(--primary);
   color: #fff;
+}
+
+/* Keep the popup comfortably within very narrow phone screens */
+@media (max-width: 420px) {
+  .shop-popup { width: 160px; }
+  .shop-popup img { height: 56px; }
+  .shop-popup-body { padding: 8px; }
+  .shop-popup-body h4 { font-size: 11.5px; margin-bottom: 5px; }
+  .shop-popup-rating,
+  .shop-popup-muted { font-size: 10px; }
+  .shop-popup .status-badge { font-size: 9.5px !important; padding: 2px 6px !important; }
+  .shop-popup-btn { font-size: 10px !important; padding: 6px 0 !important; }
+  .shop-popup-icon-btn { width: 26px; height: 26px; font-size: 11px; }
 }
