@@ -2635,3 +2635,1958 @@ section.show .feature-ride-img {
   .shop-popup-btn { font-size: 10px !important; padding: 6px 0 !important; }
   .shop-popup-icon-btn { width: 26px; height: 26px; font-size: 11px; }
 }
+
+
+
+
+
+/* ============================================================
+   GENERAL TUNING FEES — dark "board" section, echoes the shop's
+   printed banner while staying on the site's actual brand tokens
+============================================================ */
+.tuning-fees-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+  padding: 90px 8%;
+}
+
+/* Diagonal red corner flag — a nod to the physical banner */
+.tuning-fees-flag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(135deg, transparent 50%, #C23B2E 50%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.tuning-fees-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tuning-fees-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.tuning-fees-eyebrow {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tuning-fees-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.tuning-fees-subtext {
+  color: #B7C2D6;
+  font-size: 15px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.tuning-fees-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.tuning-card {
+  position: relative;
+  background: linear-gradient(180deg, #17284A, #0F1D38);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 44px 20px 26px;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+
+.tuning-card:hover {
+  border-color: rgba(255, 90, 54, 0.4);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.35);
+}
+
+/* Gold pricing badge — floats above the card, mirrors the banner's circles */
+.tuning-card-badge {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 35% 30%, #1E3A66, #0B1830);
+  border: 3px solid rgba(240, 185, 63, 0.35);
+  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.tuning-card-price {
+  color: #F0B93F;
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.tuning-card-price small {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tuning-card-currency {
+  color: #F0B93F;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+
+.tuning-card-only {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  color: #fff;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.tuning-card-icon {
+  color: #E7EDF6;
+  margin: 26px auto 14px;
+  width: 130px;
+}
+
+.tuning-card-icon svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tuning-card:hover .tuning-card-icon {
+  color: var(--primary);
+}
+
+.tuning-card-name {
+  color: #fff;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.tuning-fees-note {
+  text-align: center;
+  color: #8896AC;
+  font-size: 12.5px;
+  margin-top: 34px;
+}
+
+/* Scroll-reveal (self-contained — works even if this section's JS
+   below isn't hooked up, since it degrades to just "visible") */
+.tuning-fees-section.tf-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.tuning-fees-section.tf-reveal.tf-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .tuning-fees-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .tuning-fees-section { padding: 70px 6%; }
+  .tuning-fees-grid { grid-template-columns: 1fr; gap: 40px 0; }
+  .tuning-card { padding-top: 40px; }
+  .tuning-fees-flag { width: 140px; height: 140px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   EFI FEATURE SECTION
+   ============================================================ */
+
+   .efi-section {
+    position: relative;
+    padding: 120px 8%;
+    background: #0d0e10;
+    color: #fff;
+    overflow: hidden;
+  }
+  
+  .efi-section::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    right: -250px;
+    top: -250px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  
+  .efi-section::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    left: -180px;
+    bottom: -180px;
+    border-radius: 50%;
+    background: rgba(229, 57, 53, 0.07);
+    filter: blur(50px);
+  }
+  
+  .efi-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .efi-intro {
+    max-width: 520px;
+  }
+  
+  .efi-eyebrow {
+    display: inline-block;
+    color: #ef4b47;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  
+  .efi-intro h2 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    color: #fff;
+  }
+  
+  .efi-intro h2 span {
+    color: #ef4b47;
+  }
+  
+  .efi-intro > p {
+    color: rgba(255,255,255,.62);
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 480px;
+  }
+  
+  
+  /* MINI STATS */
+  
+  .efi-mini-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 35px;
+  }
+  
+  .efi-mini-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.025);
+    border-radius: 10px;
+  }
+  
+  .efi-stat-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(239,75,71,.1);
+    color: #ef4b47;
+    font-size: 10px;
+    font-weight: 800;
+  }
+  
+  .efi-mini-stat strong {
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+  
+  .efi-mini-stat small {
+    display: block;
+    color: rgba(255,255,255,.4);
+    font-size: 10px;
+  }
+  
+  
+  /* BUTTONS */
+  
+  .efi-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+  }
+  
+  .efi-primary-btn {
+    background: #ef4b47 !important;
+    border-radius: 7px;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .efi-primary-btn span {
+    margin-left: 12px;
+    transition: transform .25s ease;
+  }
+  
+  .efi-primary-btn:hover span {
+    transform: translateX(4px);
+  }
+  
+  .efi-text-btn {
+    border: 0;
+    background: transparent;
+    color: rgba(255,255,255,.7);
+    font: inherit;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 0;
+  }
+  
+  .efi-text-btn span {
+    margin-left: 7px;
+    color: #ef4b47;
+  }
+  
+  
+  /* ============================================================
+     DIGITAL EFI CHECKLIST CARD
+     ============================================================ */
+  
+  .efi-check-card {
+    background: #151719;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.35);
+  }
+  
+  .efi-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  
+  .efi-card-label {
+    display: block;
+    color: #ef4b47;
+    font-size: 9px;
+    letter-spacing: 1.7px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  
+  .efi-card-top h3 {
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .efi-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255,255,255,.45);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .efi-status span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ef4b47;
+    box-shadow: 0 0 0 4px rgba(239,75,71,.1);
+  }
+  
+  
+  /* PROGRESS */
+  
+  .efi-progress {
+    margin: 22px 0;
+  }
+  
+  .efi-progress-line {
+    height: 4px;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .efi-progress-line span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ef4b47;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1.2s ease;
+  }
+  
+  .efi-section.visible .efi-progress-line span {
+    transform: scaleX(1);
+  }
+  
+  .efi-progress-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9px;
+    font-size: 10px;
+  }
+  
+  .efi-progress-text span {
+    color: rgba(255,255,255,.35);
+  }
+  
+  .efi-progress-text strong {
+    color: rgba(255,255,255,.65);
+  }
+  
+  
+  /* CHECK ITEMS */
+  
+  .efi-check-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 25px;
+  }
+  
+  .efi-check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    color: rgba(255,255,255,.62);
+    font-size: 11px;
+  }
+  
+  .check-mark {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(239,75,71,.1);
+    color: #ef4b47;
+    font-size: 10px;
+    font-weight: 800;
+  }
+  
+  
+  /* CARD BOTTOM */
+  
+  .efi-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+  
+  .efi-card-bottom > span {
+    color: rgba(255,255,255,.3);
+    font-size: 9px;
+  }
+  
+  .efi-card-bottom button {
+    border: 0;
+    background: transparent;
+    color: #ef4b47;
+    cursor: pointer;
+    font: inherit;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  
+  
+  /* ============================================================
+     WORKSHOP SECTION
+     ============================================================ */
+  
+  .workshop-section {
+    padding: 120px 8%;
+    background: #f5eee1;
+  }
+  
+  .workshop-heading {
+    max-width: 1200px;
+    margin: 0 auto 45px;
+  }
+  
+  .workshop-eyebrow {
+    display: block;
+    color: #ef4b47;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  
+  .workshop-heading h2 {
+    color: var(--dark);
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+  
+  .workshop-heading h2 span {
+    color: #ef4b47;
+  }
+  
+  .workshop-heading p {
+    max-width: 550px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  .workshop-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 20px;
+  }
+  
+  
+  /* WORKSHOP IMAGE */
+  
+  .workshop-main-card {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #111;
+  }
+  
+  .workshop-main-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s ease;
+  }
+  
+  .workshop-main-card:hover img {
+    transform: scale(1.035);
+  }
+  
+  .workshop-image-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: linear-gradient(
+      transparent,
+      rgba(0,0,0,.85)
+    );
+    color: #fff;
+  }
+  
+  .workshop-image-overlay > div span {
+    display: block;
+    color: #ef4b47;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  
+  .workshop-image-overlay h3 {
+    font-size: 22px;
+  }
+  
+  .workshop-arrow {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  
+  .poster-card {
+    background: #111315;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+  }
+  
+  .poster-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .poster-card-header > div > span {
+    display: block;
+    color: #ef4b47;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  
+  .poster-card-header h3 {
+    font-size: 18px;
+  }
+  
+  .poster-number {
+    color: rgba(255,255,255,.18);
+    font-size: 28px;
+    font-weight: 800;
+  }
+  
+  .poster-image-wrap {
+    position: relative;
+    flex: 1;
+    min-height: 390px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #050505;
+  }
+  
+  .poster-image-wrap img {
+    width: 100%;
+    height: 100%;
+    min-height: 390px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: .88;
+    transition: transform .5s ease, opacity .3s ease;
+  }
+  
+  .poster-card:hover .poster-image-wrap img {
+    transform: scale(1.025);
+    opacity: 1;
+  }
+  
+  .poster-view-btn {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 13px;
+    border: 0;
+    border-radius: 7px;
+    background: #ef4b47;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  
+  .poster-view-btn span {
+    font-size: 17px;
+    line-height: 1;
+  }
+  
+  .poster-description {
+    color: rgba(255,255,255,.42);
+    font-size: 11px;
+    line-height: 1.6;
+    margin: 15px 2px 2px;
+  }
+  
+  
+
+  
+  .featured-efi-service {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    min-height: 350px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #111315;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .featured-efi-content {
+    padding: 55px;
+    position: relative;
+    z-index: 3;
+  }
+  
+  .featured-efi-tag {
+    color: #ef4b47;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 17px;
+  }
+  
+  .featured-efi-content h3 {
+    font-size: clamp(34px, 4vw, 50px);
+    line-height: .98;
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+  }
+  
+  .featured-efi-content h3 span {
+    color: #ef4b47;
+  }
+  
+  .featured-efi-content p {
+    max-width: 430px;
+    color: rgba(255,255,255,.5);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  
+  .featured-efi-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  
+  .featured-efi-link strong {
+    color: #ef4b47;
+    font-size: 17px;
+    transition: transform .25s ease;
+  }
+  
+  .featured-efi-service:hover .featured-efi-link strong {
+    transform: translateX(5px);
+  }
+  
+  
+  
+  .featured-efi-visual {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .efi-ring {
+    position: absolute;
+    border: 1px solid rgba(239,75,71,.2);
+    border-radius: 50%;
+  }
+  
+  .efi-ring-1 {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .efi-ring-2 {
+    width: 430px;
+    height: 430px;
+    border-color: rgba(255,255,255,.05);
+  }
+  
+  .efi-engine-symbol {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: #ef4b47;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    box-shadow: 0 20px 70px rgba(239,75,71,.25);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .efi-floating-card {
+    position: absolute;
+    z-index: 3;
+    padding: 10px 13px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 7px;
+    background: rgba(25,27,29,.92);
+    backdrop-filter: blur(10px);
+    color: rgba(255,255,255,.65);
+    font-size: 9px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.3);
+  }
+  
+  .efi-floating-card span {
+    color: #ef4b47;
+    margin-right: 6px;
+  }
+  
+  .efi-floating-top {
+    top: 22%;
+    right: 12%;
+  }
+  
+  .efi-floating-bottom {
+    bottom: 21%;
+    left: 12%;
+  }
+  
+  
+  
+  .efi-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+  
+  .efi-modal.open {
+    display: flex;
+  }
+  
+  .efi-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.9);
+    backdrop-filter: blur(12px);
+  }
+  
+  .efi-modal-content {
+    position: relative;
+    z-index: 2;
+    width: min(1000px, 100%);
+    max-height: 94vh;
+    overflow: auto;
+    background: #111315;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 40px 100px rgba(0,0,0,.5);
+  }
+  
+  .efi-modal-close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    z-index: 5;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
+  }
+  
+  .efi-modal-title {
+    margin-bottom: 20px;
+  }
+  
+  .efi-modal-title span {
+    color: #ef4b47;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+  
+  .efi-modal-title h2 {
+    margin-top: 6px;
+    color: #fff;
+    font-size: 25px;
+  }
+  
+  .efi-modal-image {
+    border-radius: 9px;
+    overflow: hidden;
+    background: #000;
+    text-align: center;
+  }
+  
+  .efi-modal-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+  }
+  
+
+  
+  @media (max-width: 950px) {
+  
+    .efi-container {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+  
+    .efi-intro {
+      max-width: 700px;
+    }
+  
+    .workshop-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .workshop-main-card,
+    .workshop-main-card img {
+      min-height: 450px;
+    }
+  
+    .poster-image-wrap,
+    .poster-image-wrap img {
+      min-height: 500px;
+    }
+  
+    .featured-efi-service {
+      grid-template-columns: 1fr;
+    }
+  
+    .featured-efi-visual {
+      min-height: 280px;
+    }
+  
+  }
+  
+  
+  @media (max-width: 600px) {
+  
+    .efi-section,
+    .workshop-section {
+      padding: 80px 5%;
+    }
+  
+    .efi-mini-stats {
+      grid-template-columns: 1fr;
+    }
+  
+    .efi-check-items {
+      grid-template-columns: 1fr;
+    }
+  
+    .efi-check-card {
+      padding: 20px;
+    }
+  
+    .efi-card-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .workshop-main-card,
+    .workshop-main-card img {
+      min-height: 350px;
+    }
+  
+    .poster-image-wrap,
+    .poster-image-wrap img {
+      min-height: 420px;
+    }
+  
+    .featured-efi-content {
+      padding: 35px 25px;
+    }
+  
+    .featured-efi-visual {
+      min-height: 260px;
+    }
+  
+    .efi-floating-top {
+      right: 8%;
+    }
+  
+    .efi-floating-bottom {
+      left: 8%;
+    }
+  
+    .efi-modal {
+      padding: 10px;
+    }
+  
+    .efi-modal-content {
+      padding: 15px;
+    }
+  
+  }
+
+  body.efi-modal-open {
+    overflow: hidden;
+  }
+
+
+
+
+
+
+
+/* -------------------------- */
+
+
+
+/* ============================================================
+   EFI FEATURE SECTION
+   MATCHES EXISTING WEBSITE THEME
+   ============================================================ */
+
+.efi-section {
+  position: relative;
+  padding: 110px 8%;
+  background: var(--bg);
+  color: var(--dark);
+  overflow: hidden;
+}
+
+.efi-section::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -250px;
+  top: -250px;
+  border-radius: 50%;
+  border: 1px solid rgba(18, 44, 87, 0.06);
+}
+
+.efi-section::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  left: -180px;
+  bottom: -180px;
+  border-radius: 50%;
+  background: rgba(255, 90, 54, 0.06);
+  filter: blur(50px);
+}
+
+.efi-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 75px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.efi-intro {
+  max-width: 520px;
+}
+
+.efi-eyebrow {
+  display: inline-block;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.efi-intro h2 {
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+  color: var(--dark);
+}
+
+.efi-intro h2 span {
+  color: var(--primary);
+}
+
+.efi-intro > p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+
+/* ============================================================
+   MINI STATS
+   ============================================================ */
+
+.efi-mini-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.efi-mini-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(18, 44, 87, 0.09);
+  background: rgba(255,255,255,.45);
+  border-radius: 9px;
+}
+
+.efi-stat-icon {
+  width: 31px;
+  height: 31px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,90,54,.1);
+  color: var(--primary);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.efi-mini-stat strong {
+  display: block;
+  color: var(--dark);
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+.efi-mini-stat small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.efi-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.efi-primary-btn {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-radius: 7px;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.efi-primary-btn span {
+  margin-left: 12px;
+  transition: transform .25s ease;
+}
+
+.efi-primary-btn:hover span {
+  transform: translateX(4px);
+}
+
+.efi-text-btn {
+  border: 0;
+  background: transparent;
+  color: var(--dark);
+  font: inherit;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 10px 0;
+  font-weight: 600;
+}
+
+.efi-text-btn span {
+  margin-left: 7px;
+  color: var(--primary);
+}
+
+
+/* ============================================================
+   EFI CHECKLIST CARD
+   ============================================================ */
+
+.efi-check-card {
+  background: #fff;
+  border: 1px solid rgba(18,44,87,.08);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(18,44,87,.10);
+}
+
+.efi-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(18,44,87,.08);
+}
+
+.efi-card-label {
+  display: block;
+  color: var(--primary);
+  font-size: 9px;
+  letter-spacing: 1.7px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.efi-card-top h3 {
+  color: var(--dark);
+  font-size: 20px;
+}
+
+.efi-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.efi-status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(255,90,54,.1);
+}
+
+
+/* ============================================================
+   PROGRESS
+   ============================================================ */
+
+.efi-progress {
+  margin: 22px 0;
+}
+
+.efi-progress-line {
+  height: 4px;
+  background: rgba(18,44,87,.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.efi-progress-line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.2s ease;
+}
+
+.efi-section.visible .efi-progress-line span {
+  transform: scaleX(1);
+}
+
+.efi-progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  font-size: 10px;
+}
+
+.efi-progress-text span {
+  color: var(--muted);
+}
+
+.efi-progress-text strong {
+  color: var(--dark);
+}
+
+
+/* ============================================================
+   CHECK ITEMS
+   ============================================================ */
+
+.efi-check-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 25px;
+}
+
+.efi-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(18,44,87,.06);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.check-mark {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,90,54,.1);
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   CARD BOTTOM
+   ============================================================ */
+
+.efi-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 18px;
+}
+
+.efi-card-bottom > span {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.efi-card-bottom button {
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   WORKSHOP + POSTER
+   MATCHES EXISTING WEBSITE THEME
+   ============================================================ */
+
+   .workshop-section {
+    padding: 110px 8%;
+    background: var(--bg);
+  }
+  
+  .workshop-heading {
+    max-width: 1200px;
+    margin: 0 auto 45px;
+  }
+  
+  .workshop-eyebrow {
+    display: block;
+    color: var(--primary);
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  
+  .workshop-heading h2 {
+    color: var(--dark);
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+  
+  .workshop-heading h2 span {
+    color: var(--primary);
+  }
+  
+  .workshop-heading p {
+    max-width: 550px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  .workshop-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 20px;
+  }
+  
+  
+  /* ============================================================
+     WORKSHOP IMAGE
+     ============================================================ */
+  
+  .workshop-main-card {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--dark);
+  }
+  
+  .workshop-main-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s ease;
+  }
+  
+  .workshop-main-card:hover img {
+    transform: scale(1.035);
+  }
+  
+  .workshop-image-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: linear-gradient(
+      transparent,
+      rgba(18,44,87,.92)
+    );
+    color: #fff;
+  }
+  
+  .workshop-image-overlay > div span {
+    display: block;
+    color: #ff8066;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  
+  .workshop-image-overlay h3 {
+    font-size: 22px;
+  }
+  
+  .workshop-arrow {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /* ============================================================
+     POSTER CARD
+     ============================================================ */
+  
+  .poster-card {
+    background: var(--dark);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+  }
+  
+  .poster-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .poster-card-header > div > span {
+    display: block;
+    color: #ff8066;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  
+  .poster-card-header h3 {
+    font-size: 18px;
+  }
+  
+  .poster-number {
+    color: rgba(255,255,255,.2);
+    font-size: 28px;
+    font-weight: 800;
+  }
+  
+  .poster-image-wrap {
+    position: relative;
+    flex: 1;
+    min-height: 390px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+  }
+  
+  .poster-image-wrap img {
+    width: 100%;
+    height: 100%;
+    min-height: 390px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform .5s ease;
+  }
+  
+  .poster-card:hover .poster-image-wrap img {
+    transform: scale(1.025);
+  }
+  
+  .poster-view-btn {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 13px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  
+  .poster-view-btn span {
+    font-size: 17px;
+    line-height: 1;
+  }
+  
+  .poster-description {
+    color: rgba(255,255,255,.5);
+    font-size: 11px;
+    line-height: 1.6;
+    margin: 15px 2px 2px;
+  }
+  
+  
+  /* ============================================================
+     EFI FEATURED SERVICE
+     ============================================================ */
+  
+  .featured-efi-service {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    min-height: 350px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .featured-efi-content {
+    padding: 55px;
+    position: relative;
+    z-index: 3;
+  }
+  
+  .featured-efi-tag {
+    color: #ff8066;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 17px;
+  }
+  
+  .featured-efi-content h3 {
+    font-size: clamp(34px, 4vw, 50px);
+    line-height: .98;
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+  }
+  
+  .featured-efi-content h3 span {
+    color: #ff8066;
+  }
+  
+  .featured-efi-content p {
+    max-width: 430px;
+    color: rgba(255,255,255,.6);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  
+  .featured-efi-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  
+  .featured-efi-link strong {
+    color: #ff8066;
+    font-size: 17px;
+    transition: transform .25s ease;
+  }
+  
+  .featured-efi-service:hover .featured-efi-link strong {
+    transform: translateX(5px);
+  }
+  
+  
+  /* EFI VISUAL */
+  
+  .featured-efi-visual {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .efi-ring {
+    position: absolute;
+    border: 1px solid rgba(255,128,102,.25);
+    border-radius: 50%;
+  }
+  
+  .efi-ring-1 {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .efi-ring-2 {
+    width: 430px;
+    height: 430px;
+    border-color: rgba(255,255,255,.08);
+  }
+  
+  .efi-engine-symbol {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    box-shadow: 0 20px 70px rgba(255,90,54,.25);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .efi-floating-card {
+    position: absolute;
+    z-index: 3;
+    padding: 10px 13px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 7px;
+    background: rgba(18,44,87,.9);
+    backdrop-filter: blur(10px);
+    color: rgba(255,255,255,.75);
+    font-size: 9px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+  }
+  
+  .efi-floating-card span {
+    color: #ff8066;
+    margin-right: 6px;
+  }
+  
+  .efi-floating-top {
+    top: 22%;
+    right: 12%;
+  }
+  
+  .efi-floating-bottom {
+    bottom: 21%;
+    left: 12%;
+  }
+  
+  
+  /* ============================================================
+     POSTER MODAL
+     ============================================================ */
+  
+  .efi-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+  
+  .efi-modal.open {
+    display: flex;
+  }
+  
+  .efi-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(18,44,87,.88);
+    backdrop-filter: blur(12px);
+  }
+  
+  .efi-modal-content {
+    position: relative;
+    z-index: 2;
+    width: min(1000px, 100%);
+    max-height: 94vh;
+    overflow: auto;
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 40px 100px rgba(0,0,0,.4);
+  }
+  
+  .efi-modal-close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    z-index: 5;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--dark);
+    color: #fff;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
+  }
+  
+  .efi-modal-title {
+    margin-bottom: 20px;
+  }
+  
+  .efi-modal-title span {
+    color: var(--primary);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+  
+  .efi-modal-title h2 {
+    margin-top: 6px;
+    color: var(--dark);
+    font-size: 25px;
+  }
+  
+  .efi-modal-image {
+    border-radius: 9px;
+    overflow: hidden;
+    background: #fff;
+    text-align: center;
+  }
+  
+  .efi-modal-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+  }
+  
+  
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  
+  @media (max-width: 950px) {
+  
+    .efi-container {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+  
+    .efi-intro {
+      max-width: 700px;
+    }
+  
+    .workshop-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .workshop-main-card,
+    .workshop-main-card img {
+      min-height: 450px;
+    }
+  
+    .poster-image-wrap,
+    .poster-image-wrap img {
+      min-height: 500px;
+    }
+  
+    .featured-efi-service {
+      grid-template-columns: 1fr;
+    }
+  
+    .featured-efi-visual {
+      min-height: 280px;
+    }
+  
+  }
+  
+  
+  @media (max-width: 600px) {
+  
+    .efi-section,
+    .workshop-section {
+      padding: 80px 5%;
+    }
+  
+    .efi-mini-stats {
+      grid-template-columns: 1fr;
+    }
+  
+    .efi-check-items {
+      grid-template-columns: 1fr;
+    }
+  
+    .efi-check-card {
+      padding: 20px;
+    }
+  
+    .efi-card-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .workshop-main-card,
+    .workshop-main-card img {
+      min-height: 350px;
+    }
+  
+    .poster-image-wrap,
+    .poster-image-wrap img {
+      min-height: 420px;
+    }
+  
+    .featured-efi-content {
+      padding: 35px 25px;
+    }
+  
+    .featured-efi-visual {
+      min-height: 260px;
+    }
+  
+    .efi-floating-top {
+      right: 8%;
+    }
+  
+    .efi-floating-bottom {
+      left: 8%;
+    }
+  
+    .efi-modal {
+      padding: 10px;
+    }
+  
+    .efi-modal-content {
+      padding: 15px;
+    }
+  
+  }
+
