@@ -4590,3 +4590,407 @@ section.show .feature-ride-img {
   
   }
 
+
+
+
+
+
+
+
+
+
+
+  /* ============================================================
+   WHY CHOOSE US
+   ============================================================ */
+
+.why-section {
+  padding: 110px 8%;
+  background: var(--bg);
+  color: var(--dark);
+}
+
+.why-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.why-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 55px;
+}
+
+.why-heading {
+  flex: 1;
+}
+
+.why-label {
+  display: inline-block;
+  margin-bottom: 16px;
+
+  color: var(--primary);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.why-heading h2 {
+  margin: 0;
+
+  color: var(--dark);
+
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.why-heading h2 span {
+  color: var(--primary);
+}
+
+.why-intro {
+  max-width: 410px;
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+
+/* ============================================================
+   FEATURE CARD
+   ============================================================ */
+
+.why-card {
+  position: relative;
+
+  min-height: 245px;
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(18, 44, 87, 0.08);
+  border-radius: 14px;
+
+  box-shadow: 0 8px 25px rgba(18, 44, 87, 0.04);
+
+  overflow: hidden;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(255, 90, 54, 0.25);
+
+  box-shadow: 0 18px 40px rgba(18, 44, 87, 0.10);
+}
+
+
+/* TOP */
+
+.why-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 38px;
+}
+
+
+/* ICON */
+
+.why-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: rgba(255, 90, 54, 0.10);
+
+  color: var(--primary);
+
+  font-size: 19px;
+  font-weight: 700;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease;
+}
+
+.why-card:hover .why-icon {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+
+/* NUMBER */
+
+.why-small {
+  color: rgba(18, 44, 87, 0.25);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+
+/* TITLE */
+
+.why-card h3 {
+  margin: 0 0 12px;
+
+  color: var(--dark);
+
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -.3px;
+}
+
+
+/* DESCRIPTION */
+
+.why-card p {
+  max-width: 300px;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+
+/* ORANGE ACCENT */
+
+.why-accent {
+  position: absolute;
+
+  left: 30px;
+  bottom: 0;
+
+  width: 38px;
+  height: 3px;
+
+  background: var(--primary);
+
+  transition: width .3s ease;
+}
+
+.why-card:hover .why-accent {
+  width: 70px;
+}
+
+
+/* ============================================================
+   CONTACT CARD
+   ============================================================ */
+
+.why-contact-card {
+  position: relative;
+
+  min-height: 245px;
+  padding: 30px;
+
+  background: var(--dark);
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(18, 44, 87, 0.12);
+}
+
+
+/* subtle orange corner */
+
+.why-contact-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  right: -55px;
+  bottom: -55px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  opacity: .12;
+}
+
+
+/* LABEL */
+
+.why-contact-label {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: #ff8066;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+
+/* TITLE */
+
+.why-contact-card h3 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-size: 27px;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+
+/* TEXT */
+
+.why-contact-card p {
+  max-width: 250px;
+
+  margin: 0;
+
+  color: rgba(255, 255, 255, .62);
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+/* BUTTON */
+
+.why-contact-btn {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 20px;
+  padding: 10px 16px;
+
+  background: var(--primary);
+
+  color: #ffffff;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background .25s ease,
+    transform .25s ease;
+}
+
+.why-contact-btn span {
+  font-size: 16px;
+  line-height: 1;
+
+  transition: transform .25s ease;
+}
+
+.why-contact-btn:hover {
+  background: #e94d2c;
+  transform: translateY(-2px);
+}
+
+.why-contact-btn:hover span {
+  transform: translateX(4px);
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 950px) {
+
+  .why-section {
+    padding: 90px 6%;
+  }
+
+  .why-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  .why-section {
+    padding: 75px 5%;
+  }
+
+  .why-heading h2 {
+    font-size: 42px;
+    letter-spacing: -1.5px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .why-card,
+  .why-contact-card {
+    min-height: 230px;
+  }
+
+}
