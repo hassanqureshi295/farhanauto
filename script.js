@@ -193,7 +193,7 @@ handleNavScroll();
   as a blocked popup — which is why Directions looked broken even though
   the URL-building logic itself was correct. */
 (function () {
- const SHOP_DEST = "33.1487851,73.7391439";
+  const SHOP_DEST = "33.129338,73.796815";
 
  function buildUrl(origin) {
    const originParam = origin ? `&origin=${origin}` : "";
@@ -253,7 +253,7 @@ handleNavScroll();
  const mapEl = document.getElementById("shopMap");
  if (!mapEl || typeof maplibregl === "undefined") return;
 
- const SHOP_COORDS = [73.7391439, 33.1487851]; // [lng, lat]
+ const SHOP_COORDS = [73.796815, 33.129338]; // [lng, lat]
  let shopMapStarted = false;
 
  function initShopMap() {
