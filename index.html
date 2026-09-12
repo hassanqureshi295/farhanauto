@@ -1271,12 +1271,16 @@
 
     <!-- INTERACTIVE MAP (MapLibre) — richer alternative to the embed above,
          with a live open/closed marker popup and directions button -->
-    <div class="shop-map-v2">
-      <div class="shop-map-header">
-        <div>
-          <h3>Find Us Live</h3>
-          <p>Pan &amp; zoom the map, or tap the pin for directions.</p>
-        </div>
+         <div class="shop-map-v2">
+          <div class="shop-map-header">
+            <div>
+              <h3>Find Us Live</h3>
+              <p>Sector F3, Main Kotli Road, Mirpur, New Mirpur City, 10250</p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving"
+                 target="_blank" rel="noopener noreferrer" class="btn outline directions-link">
+                Get directions to the workshop
+              </a>
+            </div>
         <div class="shop-map-controls">
           <button type="button" class="map-ctrl-btn" id="mapZoomIn" aria-label="Zoom in">+</button>
           <button type="button" class="map-ctrl-btn" id="mapZoomOut" aria-label="Zoom out">−</button>
@@ -1342,11 +1346,36 @@
 
 
 
+  <!-- STICKY MOBILE ACTION BAR — always-visible Call / WhatsApp / Directions.
+       Plain anchors only, no JS dependency, works even if script.js fails. -->
+  <div class="action-bar" role="group" aria-label="Contact Farhan Mughal Auto Electrician">
+    <a href="tel:+923410576603" class="action-bar__item action-bar__item--call" data-loc="sticky">
+      <span aria-hidden="true">📞</span>
+      <span>Call</span>
+    </a>
+    <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue"
+       target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky">
+      <span aria-hidden="true">💬</span>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving"
+       target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky">
+      <span aria-hidden="true">📍</span>
+      <span>Directions</span>
+    </a>
+  </div>
 
 
 
 
-  
+
+
+
+
+
+
+
+
 </body>
 
 
