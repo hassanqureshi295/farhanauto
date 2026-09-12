@@ -5102,3 +5102,23 @@ body {
   margin-top: 8px;
   font-size: 0.9375rem;
 }
+
+
+/* FOCUS VISIBILITY (C-8) — nothing in this file targets :focus at all
+   right now, so keyboard users have no way to see where they are. */
+   :focus-visible {
+    outline: 3px solid var(--dark2);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  
+  /* On the dark hero, dark footer, and orange primary buttons, a navy ring
+     disappears against the background — invert to white there instead */
+  .hero :focus-visible,
+  footer :focus-visible,
+  .sidebar :focus-visible,
+  .btn.primary:focus-visible,
+  .action-bar__item:focus-visible {
+    outline-color: #fff;
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.45);
+  }
