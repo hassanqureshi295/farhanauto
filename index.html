@@ -6,17 +6,34 @@
        bar still has a #section hash left over from an earlier click, e.g. #contact.
        Must run before the browser tries to scroll to that anchor, so it sits
        first, before anything else in <head>. -->
-  <script>
-    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    if (window.location.hash) {
-      history.replaceState(null, "", window.location.pathname + window.location.search);
-    }
-    window.scrollTo(0, 0);
-  </script>
+        <script src="scroll-fix.js"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Farhan Mughal Auto Electrician</title>
+  <meta name="format-detection" content="telephone=no">
+  <title>Auto Electrician in Mirpur | EFI & ECU Diagnostics | Farhan Mughal</title>
+
+  <!-- Local SEO essentials -->
+  <meta name="description" content="Car electrical faults found and fixed in Mirpur. EFI tune-ups, ECU diagnostics, wiring and battery faults. Sector F3, Main Kotli Road. Open 9am–9pm, closed Friday. Call +92 341 0576603.">
+  <link rel="canonical" href="https://farhanauto.netlify.app/">
+
+  <!-- Open Graph — controls how the page looks when shared on WhatsApp/Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Farhan Mughal Auto Electrician">
+  <meta property="og:title" content="Farhan Mughal Auto Electrician — Mirpur">
+  <meta property="og:description" content="Car not starting? EFI, ECU and wiring faults diagnosed properly. Sector F3, Main Kotli Road, Mirpur. Call +92 341 0576603.">
+  <meta property="og:url" content="https://farhanauto.netlify.app/">
+  <meta property="og:image" content="https://farhanauto.netlify.app/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_PK">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Farhan Mughal Auto Electrician — Mirpur">
+  <meta name="twitter:description" content="EFI, ECU and auto-electrical faults diagnosed properly. Sector F3, Mirpur.">
+  <meta name="twitter:image" content="https://farhanauto.netlify.app/images/og-cover.jpg">
+
   <link rel="icon" href="images/files/favicon.ico" sizes="any">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
@@ -28,14 +45,19 @@
   <!-- MapLibre GL JS (powers the interactive "Find Us Live" map below) -->
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 
+  <!-- Structured data, loaded from an external file instead of inline -->
+  <script type="application/ld+json" src="schema.json"></script>
   <style>
   </style>
+
 </head>
 
 <body>
   <div class="top-bar">
     <div class="top-bar-left">
-      +92 341 0576603
+      <a href="tel:+923410576603" class="top-bar-phone" aria-label="Call Farhan Mughal Auto Electrician on +92 341 0576603">
+        +92 341 0576603
+      </a>
     </div>
 
     <div class="top-bar-right">
@@ -148,10 +170,13 @@
     <div class="workshop-main-card">
 
       <img
-        src="images/thumb.jfif"
-        alt="Farhan Mughal Auto Electrician workshop"
-        loading="lazy"
-      >
+      src="images/thumb.jfif"
+      alt="Farhan Mughal Auto Electrician workshop"
+      width="1600"
+      height="958"
+      fetchpriority="high"
+      decoding="async"
+    >
 
       <div class="workshop-image-overlay">
 
@@ -890,15 +915,15 @@
   <section>
     <div class="stats">
       <div class="stat">
-        <h2 class="count" data-target="500">0</h2>
+        <h2 class="count" data-target="500" data-suffix="+">500+</h2>
         <p>Cars Fixed</p>
       </div>
       <div class="stat">
-        <h2 class="count" data-target="10">0</h2>
+        <h2 class="count" data-target="10" data-suffix="+">10+</h2>
         <p>Years Experience</p>
       </div>
       <div class="stat">
-        <h2 class="count" data-target="100">0</h2>
+        <h2 class="count" data-target="100" data-suffix="%">100%</h2>
         <p>Trust %</p>
       </div>
     </div>
@@ -1176,7 +1201,7 @@
         <h2>Schedule Your Appointment Today</h2>
 
         <p class="call-text">
-          Call: <strong>+92 341 0576603</strong>
+          Call: <a href="tel:+923410576603" class="call-text-link">+92 341 0576603</a>
         </p>
 
         <p class="sub-text">
@@ -1264,7 +1289,7 @@
   </section>
 
   <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" class="whatsapp-float"
-    target="_blank" aria-label="Chat with us on WhatsApp">
+    target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
       <path
         d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.77-1.833A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.354l-.355-.21-4.61 1.088 1.104-4.49-.232-.368A9.71 9.71 0 0 1 5.25 15c0-5.937 4.816-10.75 10.754-10.75 5.937 0 10.746 4.813 10.746 10.75 0 5.938-4.809 10.75-10.746 10.75zm5.895-8.05c-.322-.161-1.905-.94-2.2-1.048-.295-.108-.51-.161-.724.161-.214.322-.83 1.048-1.018 1.263-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.59-1.598-.957-.853-1.603-1.907-1.791-2.229-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.214-.322.322-.537.107-.215.053-.403-.027-.564-.08-.161-.724-1.745-.992-2.39-.261-.628-.526-.543-.724-.553l-.617-.011c-.215 0-.564.08-.859.403-.295.322-1.126 1.1-1.126 2.684 0 1.584 1.153 3.115 1.314 3.33.161.215 2.267 3.463 5.494 4.858.768.332 1.367.53 1.834.678.771.245 1.472.21 2.027.128.618-.092 1.905-.78 2.174-1.532.268-.752.268-1.397.188-1.532-.08-.134-.295-.215-.617-.376z" />
@@ -1288,7 +1313,7 @@
 
       <div>
         <div class="footer-title">Contact</div>
-        <p>+92 341 0576603</p>
+        <p><a href="tel:+923410576603" class="footer-phone-link">+92 341 0576603</a></p>
       </div>
 
     </div>
@@ -1299,8 +1324,29 @@
   </footer>
 
   <!-- MapLibre GL JS library (must load before the map init script below) -->
-  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-  <script src="script.js"></script>
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
+  <script src="script.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </body>
 
 

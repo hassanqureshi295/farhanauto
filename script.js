@@ -1,26 +1,41 @@
-   /* COUNTERS */
-   const counters = document.querySelectorAll(".count");
-
-   counters.forEach(c => {
-     const update = () => {
-       const t = +c.dataset.target;
-       let n = +c.innerText;
-       const inc = t / 90;
-
-       if (n < t) {
-         c.innerText = Math.ceil(n + inc);
-         setTimeout(update, 20);
-       } else {
-         c.innerText = t + "+";
-       }
-     };
-
-     const obs = new IntersectionObserver(e => {
-       e.forEach(x => x.isIntersecting && update());
-     }, { threshold: 0.6 });
-
-     obs.observe(c);
-   });
+      /* COUNTERS — the real numbers already sit in the HTML (see index.html).
+      This just animates on top of that; if it never runs, the page is
+      already correct. */
+      const counters = document.querySelectorAll(".count");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+   
+      function animateCount(el) {
+        const target = Number(el.dataset.target);
+        const suffix = el.dataset.suffix ?? "+";
+        if (!Number.isFinite(target)) return;
+   
+        if (prefersReducedMotion) {
+          el.textContent = target + suffix;
+          return;
+        }
+   
+        const DURATION = 1400;
+        const start = performance.now();
+   
+        const step = (now) => {
+          const progress = Math.min((now - start) / DURATION, 1);
+          const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+          el.textContent = Math.round(target * eased) + (progress === 1 ? suffix : "");
+          if (progress < 1) requestAnimationFrame(step);
+        };
+   
+        requestAnimationFrame(step);
+      }
+   
+      const counterObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCount(entry.target);
+          obs.unobserve(entry.target); // fire exactly once — stops the re-trigger/drift bug
+        });
+      }, { threshold: 0.4 });
+   
+      counters.forEach((el) => counterObserver.observe(el));
 
    /* SECTION REVEAL */
    const sections = document.querySelectorAll("section");
@@ -104,45 +119,77 @@
    link.addEventListener("click", closeMenu);
  });
 
- /* WORKSHOP OPEN/CLOSED STATUS */
- function updateWorkshopStatus() {
-   const now = new Date();
-   const day = now.getDay(); // 0 = Sunday
-   const hour = now.getHours() + now.getMinutes() / 60;
-
-   const isOpen = day !== 0 && hour >= 9 && hour < 21;
-
-   const statusText = document.getElementById("statusText");
-   const statusDot = document.getElementById("statusDot");
-   const statusBadge = document.getElementById("statusBadge");
-   const heroStatus = document.getElementById("heroTimingStatus");
-   const heroDot = document.getElementById("heroTimingDot");
-   const popupStatus = document.getElementById("popupStatusText");
-   const popupDot = document.getElementById("popupStatusDot");
-   const chipStatus = document.getElementById("chipStatusText");
-   const chipDot = document.getElementById("chipStatusDot");
-
-   const label = isOpen ? "Open Now" : "Closed Now";
-
-   if (statusText) statusText.textContent = label;
-   if (heroStatus) heroStatus.textContent = label;
-   if (popupStatus) popupStatus.textContent = label;
-   if (chipStatus) chipStatus.textContent = label;
-
-   [statusDot, heroDot, popupDot, chipDot].forEach((dot) => {
-     if (!dot) return;
-     dot.classList.toggle("dot-open", isOpen);
-     dot.classList.toggle("dot-closed", !isOpen);
-   });
-
-   if (statusBadge) {
-     statusBadge.classList.toggle("open", isOpen);
-     statusBadge.classList.toggle("closed", !isOpen);
-   }
- }
-
- updateWorkshopStatus();
- setInterval(updateWorkshopStatus, 60000);
+  /* WORKSHOP OPEN/CLOSED STATUS
+    Source of truth: 0 = Sunday … 6 = Saturday. null = closed all day.
+    Matches the printed hours in index.html: Mon–Thu & Sat–Sun 9AM–9PM, Friday closed. */
+    const WORKSHOP_HOURS = {
+      0: [9, 21], // Sunday
+      1: [9, 21], // Monday
+      2: [9, 21], // Tuesday
+      3: [9, 21], // Wednesday
+      4: [9, 21], // Thursday
+      5: null,    // Friday — CLOSED
+      6: [9, 21], // Saturday
+    };
+   
+    function getWorkshopStatus() {
+      // Evaluate "now" in Asia/Karachi, regardless of the visitor's own device
+      // timezone — a diaspora customer checking from the UK should see the
+      // same answer as someone standing outside the workshop.
+      const parts = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Karachi",
+        weekday: "short",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false,
+      }).formatToParts(new Date());
+   
+      const get = (type) => parts.find((p) => p.type === type).value;
+      const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      const day = dayMap[get("weekday")];
+      const time = Number(get("hour")) + Number(get("minute")) / 60;
+   
+      const todayHours = WORKSHOP_HOURS[day];
+      if (!todayHours) return { open: false, label: "Closed Today" };
+   
+      const [opens, closes] = todayHours;
+      if (time < opens) return { open: false, label: `Opens at ${opens}:00 AM` };
+      if (time >= closes) return { open: false, label: "Closed Now" };
+      return { open: true, label: "Open Now" };
+    }
+   
+    function updateWorkshopStatus() {
+      const { open: isOpen, label } = getWorkshopStatus();
+   
+      const statusText = document.getElementById("statusText");
+      const statusDot = document.getElementById("statusDot");
+      const statusBadge = document.getElementById("statusBadge");
+      const heroStatus = document.getElementById("heroTimingStatus");
+      const heroDot = document.getElementById("heroTimingDot");
+      const popupStatus = document.getElementById("popupStatusText");
+      const popupDot = document.getElementById("popupStatusDot");
+      const chipStatus = document.getElementById("chipStatusText");
+      const chipDot = document.getElementById("chipStatusDot");
+   
+      if (statusText) statusText.textContent = label;
+      if (heroStatus) heroStatus.textContent = label;
+      if (popupStatus) popupStatus.textContent = label;
+      if (chipStatus) chipStatus.textContent = label;
+   
+      [statusDot, heroDot, popupDot, chipDot].forEach((dot) => {
+        if (!dot) return;
+        dot.classList.toggle("dot-open", isOpen);
+        dot.classList.toggle("dot-closed", !isOpen);
+      });
+   
+      if (statusBadge) {
+        statusBadge.classList.toggle("open", isOpen);
+        statusBadge.classList.toggle("closed", !isOpen);
+      }
+    }
+   
+    updateWorkshopStatus();
+    setInterval(updateWorkshopStatus, 60000);
 
 
  /* WORKSHOP GALLERY SLIDER */

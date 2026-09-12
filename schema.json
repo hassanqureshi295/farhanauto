@@ -1,0 +1,72 @@
+{
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "@id": "https://farhanauto.netlify.app/#business",
+    "name": "Farhan Mughal Auto Electrician",
+    "url": "https://farhanauto.netlify.app/",
+    "image": "https://farhanauto.netlify.app/images/og-cover.jpg",
+    "telephone": "+92-341-0576603",
+    "priceRange": "PKR 4,499–8,499",
+    "currenciesAccepted": "PKR",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector F3, Main Kotli Road",
+      "addressLocality": "New Mirpur City",
+      "addressRegion": "Azad Jammu and Kashmir",
+      "postalCode": "10250",
+      "addressCountry": "PK"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 33.129338, "longitude": 73.796815 },
+    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815",
+    "areaServed": [
+      { "@type": "City", "name": "Mirpur" },
+      { "@type": "City", "name": "New Mirpur City" },
+      { "@type": "AdministrativeArea", "name": "Azad Jammu and Kashmir" }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.tiktok.com/@farhanmughalautoelectrician",
+      "https://www.instagram.com/farhanmughalautoelectrician"
+    ],
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "EFI Engine Tune-Up",
+          "description": "Fuel system testing, ultrasonic injector cleaning, sensor inspection, throttle service and full ECU scan."
+        },
+        "priceCurrency": "PKR",
+        "price": "4499",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "4499",
+          "maxPrice": "8499",
+          "priceCurrency": "PKR"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Auto Electrical Fault Diagnosis",
+          "description": "Wiring, lighting, sensors, starting and charging system faults."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Computer Diagnostics",
+          "description": "ECU scanning and fault-code diagnosis."
+        }
+      }
+    ]
+  }
