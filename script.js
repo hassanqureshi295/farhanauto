@@ -70,8 +70,8 @@
  /* Extra safety net for the top-of-page fix in <head>: some mobile browsers
     re-apply scroll restoration after images/map tiles finish loading, or when
     a page is restored from the back/forward cache. */
- window.addEventListener("load", () => window.scrollTo(0, 0));
- window.addEventListener("pageshow", (e) => { if (e.persisted) window.scrollTo(0, 0); });
+//  window.addEventListener("load", () => window.scrollTo(0, 0));
+//  window.addEventListener("pageshow", (e) => { if (e.persisted) window.scrollTo(0, 0); });
 
  const video = document.querySelector(".workshop-video");
 
