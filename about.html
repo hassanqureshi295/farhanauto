@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,14 +12,11 @@
   <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== ABOUT HERO ===== */
-    .about-hero {
-      padding-top: 60px;
-    }
+    /* ABOUT HERO */
+    .about-hero { padding-top: 60px; }
 
     .about-hero-grid {
       display: grid;
@@ -50,9 +46,7 @@
       margin-bottom: 0;
     }
 
-    .about-hero-image {
-      position: relative;
-    }
+    .about-hero-image { position: relative; }
 
     .about-hero-image img {
       width: 100%;
@@ -106,34 +100,15 @@
     }
 
     @media (max-width: 900px) {
-      .about-hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-hero-image {
-        order: -1;
-      }
-
-      .about-hero-text {
-        text-align: center;
-      }
-
-      .about-hero-text p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .about-hero-text .hero-buttons {
-        justify-content: center;
-      }
-
-      .about-hero-badge {
-        position: static;
-        margin: 18px auto 0;
-      }
+      .about-hero-grid { grid-template-columns: 1fr; }
+      .about-hero-image { order: -1; }
+      .about-hero-text { text-align: center; }
+      .about-hero-text p { margin-left: auto; margin-right: auto; }
+      .about-hero-text .hero-buttons { justify-content: center; }
+      .about-hero-badge { position: static; margin: 18px auto 0; }
     }
 
-    /* ===== OWNER SPOTLIGHT ===== */
+    /* OWNER SPOTLIGHT */
     #owner.owner-spotlight-section {
       background: var(--dark);
       text-align: center;
@@ -217,20 +192,17 @@
     }
 
     @media (max-width: 600px) {
-      .owner-creds {
-        flex-direction: column;
-        align-items: center;
-      }
+      .owner-creds { flex-direction: column; align-items: center; }
     }
 
-    /* 4.9★ stat — a fixed real rating, not an animated count-up like
-       the other three, so it's styled plainly with no .count JS hook */
+    /* 4.9★ stat is a fixed real rating, not an animated count-up like the
+       other three, so it has no .count JS hook */
     .stat-static h2 {
       font-size: 44px;
       color: var(--primary);
     }
 
-    /* ===== WHAT WE ACTUALLY CHECK ===== */
+    /* WHAT WE ACTUALLY CHECK */
     .checklist-section {
       background: var(--card);
       border-top: 1px solid var(--border);
@@ -294,17 +266,13 @@
       text-decoration: none;
     }
 
-    .checklist-note a:hover {
-      text-decoration: underline;
-    }
+    .checklist-note a:hover { text-decoration: underline; }
 
     @media (max-width: 600px) {
-      .checklist-grid {
-        grid-template-columns: 1fr;
-      }
+      .checklist-grid { grid-template-columns: 1fr; }
     }
 
-    /* ===== MAKES WE SERVICE ===== */
+    /* MAKES WE SERVICE */
     .makes-grid {
       max-width: 900px;
       margin: 0 auto;
@@ -324,17 +292,15 @@
       color: var(--dark);
     }
 
-    /* ===== VISIT THE WORKSHOP ===== */
-    .visit-section {
-      background: var(--bg);
-    }
+    /* VISIT THE WORKSHOP */
+    .visit-section { background: var(--bg); }
 
     .visit-grid {
       max-width: 700px;
       margin: 0 auto;
     }
 
-    /* ===== CTA CARD ===== */
+    /* CTA CARD */
     .cta-card {
       max-width: 760px;
       margin: 0 auto;
@@ -342,9 +308,7 @@
       align-items: center;
     }
 
-    .cta-card .btn {
-      text-decoration: none;
-    }
+    .cta-card .btn { text-decoration: none; }
 
     .cta-card-actions {
       display: flex;
@@ -363,7 +327,6 @@
         +92 341 0576603
       </a>
     </div>
-
     <div class="top-bar-right">
       Sector F3, Main Kotli Road, Mirpur, New Mirpur City, 10250
     </div>
@@ -371,9 +334,7 @@
 
   <!-- NAV -->
   <div class="navbar">
-    <div class="logo">
-      FM <span>Auto Electrician</span>
-    </div>
+    <div class="logo">FM <span>Auto Electrician</span></div>
 
     <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidebar">☰</button>
 
@@ -382,7 +343,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#contact">Contact</a></li>
-      <li><a href="tel:+923410576603" class="btn" style="text-decoration:none; color:white;">Call Us</a></li>
+      <li><a href="tel:+923410576603" class="btn" style="color:white;">Call Us</a></li>
     </ul>
   </div>
 
@@ -399,18 +360,11 @@
   <!-- ABOUT HERO -->
   <section class="about-hero">
     <div class="about-hero-grid">
-
       <div class="about-hero-text">
         <p class="services-eyebrow">Who We Are</p>
         <h1>Built On Trust, Powered By Experience</h1>
-        <p>
-          We're a professional auto-electrical workshop in Mirpur, specialising in EFI diagnostics,
-          ECU scanning, and complete wiring and electrical fault-finding.
-        </p>
-        <p>
-          Led by <strong>Farhan Mughal</strong>, with over 10 years of hands-on experience, our workshop
-          focuses on honest work, accurate diagnosis, and long-term fixes instead of temporary ones.
-        </p>
+        <p>We're a professional auto-electrical workshop in Mirpur, specialising in EFI diagnostics, ECU scanning, and complete wiring and electrical fault-finding.</p>
+        <p>Led by <strong>Farhan Mughal</strong>, with over 10 years of hands-on experience, our workshop focuses on honest work, accurate diagnosis, and long-term fixes instead of temporary ones.</p>
 
         <div class="hero-buttons">
           <a href="tel:+923410576603" class="btn primary" style="text-decoration:none;">Call Now</a>
@@ -425,7 +379,6 @@
           <span>Years of Trusted Service</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -434,7 +387,7 @@
     <p class="arsenal-eyebrow">Meet The Owner</p>
 
     <div class="owner-photo-wrap">
-      <img src="WhatsApp Image 2026-06-18 at 8.14.59 PM.jpeg" alt="Farhan Mughal, owner of Farhan Mughal Auto Electrician" width="150" height="150">
+      <img src="images/WhatsApp Image 2026-06-18 at 8.14.59 PM.jpeg" alt="Farhan Mughal, owner of Farhan Mughal Auto Electrician" width="150" height="150">
     </div>
 
     <h3>Farhan Mughal</h3>
@@ -453,41 +406,26 @@
     </ul>
   </section>
 
-  <!-- REAL NUMBERS -->
+  <!-- REAL NUMBERS — actual figures ship in the HTML; script.js only animates them -->
   <section id="story">
     <p class="services-eyebrow" style="text-align:center;">By The Numbers</p>
     <h2 class="section-title">A Track Record You Can Check</h2>
 
     <div class="stats">
-      <div class="stat">
-        <h2 class="count" data-target="10" data-suffix="+">10+</h2>
-        <p>Years Experience</p>
-      </div>
-      <div class="stat">
-        <h2 class="count" data-target="500" data-suffix="+">500+</h2>
-        <p>Cars Fixed</p>
-      </div>
-      <div class="stat">
-        <h2 class="count" data-target="120" data-suffix="+">120+</h2>
-        <p>Google Reviews</p>
-      </div>
-      <div class="stat stat-static">
-        <h2>4.9★</h2>
-        <p>Google Rating</p>
-      </div>
+      <div class="stat"><h2 class="count" data-target="10" data-suffix="+">10+</h2><p>Years Experience</p></div>
+      <div class="stat"><h2 class="count" data-target="500" data-suffix="+">500+</h2><p>Cars Fixed</p></div>
+      <div class="stat"><h2 class="count" data-target="120" data-suffix="+">120+</h2><p>Google Reviews</p></div>
+      <div class="stat stat-static"><h2>4.9★</h2><p>Google Rating</p></div>
     </div>
   </section>
 
-  <!-- WHAT WE ACTUALLY CHECK — real EFI checklist, not vague "precision work" copy -->
+  <!-- WHAT WE ACTUALLY CHECK -->
   <section id="checklist" class="checklist-section">
     <p class="services-eyebrow" style="text-align:center;">What We Actually Check</p>
     <h2 class="section-title">Our EFI Tune-Up Inspection</h2>
 
     <div class="checklist-intro">
-      <p>
-        Every EFI tune-up follows the same structured checklist — the full list
-        is also on display at the workshop. Nothing is skipped to save time.
-      </p>
+      <p>Every EFI tune-up follows the same structured checklist — the full list is also on display at the workshop. Nothing is skipped to save time.</p>
     </div>
 
     <div class="checklist-grid">
@@ -503,12 +441,10 @@
       <div class="checklist-item"><span class="check-mark">✓</span><span>Engine pressure check</span></div>
     </div>
 
-    <p class="checklist-note">
-      See pricing by vehicle on the <a href="index.html#tuning-fees">Home page</a>.
-    </p>
+    <p class="checklist-note">See pricing by vehicle on the <a href="index.html#tuning-fees">Home page</a>.</p>
   </section>
 
-  <!-- MAKES WE SERVICE — real brand list, matches the homepage marquee -->
+  <!-- MAKES WE SERVICE — matches the homepage brand marquee -->
   <section id="makes">
     <p class="services-eyebrow" style="text-align:center;">Makes We Service</p>
     <h2 class="section-title">Foreign & Domestic Vehicles</h2>
@@ -527,8 +463,7 @@
     </div>
   </section>
 
-  <!-- VISIT THE WORKSHOP — real hours/address, reuses the homepage's
-       timing-card styling instead of duplicating a different design -->
+  <!-- VISIT THE WORKSHOP — reuses the homepage's timing-card styling -->
   <section id="visit" class="visit-section">
     <p class="services-eyebrow" style="text-align:center;">Visit The Workshop</p>
     <h2 class="section-title">Where & When We're Open</h2>
@@ -540,23 +475,16 @@
           <h3>Sector F3, Main Kotli Road, Mirpur</h3>
         </div>
 
-        <div class="timing-row">
-          <span>Monday – Thursday, Saturday – Sunday</span>
-          <strong>9:00 AM – 9:00 PM</strong>
-        </div>
-        <div class="timing-row">
-          <span>Friday</span>
-          <strong>Closed</strong>
-        </div>
+        <div class="timing-row"><span>Monday – Thursday, Saturday – Sunday</span><strong>9:00 AM – 9:00 PM</strong></div>
+        <div class="timing-row"><span>Friday</span><strong>Closed</strong></div>
 
         <div class="status-badge" id="statusBadge">
           <span class="status-dot" id="statusDot"></span>
           <span id="statusText">Checking...</span>
         </div>
 
-        <div class="cta-card-actions" style="justify-content:flex-start; margin-top: 6px;">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving"
-             target="_blank" rel="noopener noreferrer" class="btn outline-dark">Get Directions</a>
+        <div class="cta-card-actions" style="justify-content:flex-start; margin-top:6px;">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving" target="_blank" rel="noopener noreferrer" class="btn outline-dark">Get Directions</a>
           <a href="index.html#contact" class="btn primary">See Live Map</a>
         </div>
       </div>
@@ -570,66 +498,42 @@
       <p class="sub-text">Honest diagnostics, expert repairs, and a team that treats your car like their own.</p>
       <div class="cta-card-actions">
         <a href="tel:+923410576603" class="btn appointment-btn">Call +92 341 0576603</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving"
-           target="_blank" rel="noopener noreferrer" class="btn outline-dark">Get Directions</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving" target="_blank" rel="noopener noreferrer" class="btn outline-dark">Get Directions</a>
       </div>
     </div>
   </section>
 
-  <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" class="whatsapp-float"
-    target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
-      <path
-        d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.77-1.833A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.354l-.355-.21-4.61 1.088 1.104-4.49-.232-.368A9.71 9.71 0 0 1 5.25 15c0-5.937 4.816-10.75 10.754-10.75 5.937 0 10.746 4.813 10.746 10.75 0 5.938-4.809 10.75-10.746 10.75zm5.895-8.05c-.322-.161-1.905-.94-2.2-1.048-.295-.108-.51-.161-.724.161-.214.322-.83 1.048-1.018 1.263-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.59-1.598-.957-.853-1.603-1.907-1.791-2.229-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.214-.322.322-.537.107-.215.053-.403-.027-.564-.08-.161-.724-1.745-.992-2.39-.261-.628-.526-.543-.724-.553l-.617-.011c-.215 0-.564.08-.859.403-.295.322-1.126 1.1-1.126 2.684 0 1.584 1.153 3.115 1.314 3.33.161.215 2.267 3.463 5.494 4.858.768.332 1.367.53 1.834.678.771.245 1.472.21 2.027.128.618-.092 1.905-.78 2.174-1.532.268-.752.268-1.397.188-1.532-.08-.134-.295-.215-.617-.376z" />
+      <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.77-1.833A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.354l-.355-.21-4.61 1.088 1.104-4.49-.232-.368A9.71 9.71 0 0 1 5.25 15c0-5.937 4.816-10.75 10.754-10.75 5.937 0 10.746 4.813 10.746 10.75 0 5.938-4.809 10.75-10.746 10.75zm5.895-8.05c-.322-.161-1.905-.94-2.2-1.048-.295-.108-.51-.161-.724.161-.214.322-.83 1.048-1.018 1.263-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.59-1.598-.957-.853-1.603-1.907-1.791-2.229-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.214-.322.322-.537.107-.215.053-.403-.027-.564-.08-.161-.724-1.745-.992-2.39-.261-.628-.526-.543-.724-.553l-.617-.011c-.215 0-.564.08-.859.403-.295.322-1.126 1.1-1.126 2.684 0 1.584 1.153 3.115 1.314 3.33.161.215 2.267 3.463 5.494 4.858.768.332 1.367.53 1.834.678.771.245 1.472.21 2.027.128.618-.092 1.905-.78 2.174-1.532.268-.752.268-1.397.188-1.532-.08-.134-.295-.215-.617-.376z"/>
     </svg>
   </a>
 
   <!-- STICKY MOBILE ACTION BAR -->
   <div class="action-bar" role="group" aria-label="Contact Farhan Mughal Auto Electrician">
-    <a href="tel:+923410576603" class="action-bar__item action-bar__item--call" data-loc="sticky">
-      <span aria-hidden="true">📞</span>
-      <span>Call</span>
-    </a>
-    <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue"
-       target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky">
-      <span aria-hidden="true">💬</span>
-      <span>WhatsApp</span>
-    </a>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving"
-       target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky">
-      <span aria-hidden="true">📍</span>
-      <span>Directions</span>
-    </a>
+    <a href="tel:+923410576603" class="action-bar__item action-bar__item--call" data-loc="sticky"><span aria-hidden="true">📞</span><span>Call</span></a>
+    <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky"><span aria-hidden="true">💬</span><span>WhatsApp</span></a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving" target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky"><span aria-hidden="true">📍</span><span>Directions</span></a>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
-
       <div>
         <div class="footer-title">Farhan Mughal Auto Electrician</div>
         <p>Trusted car repair service with expert mechanics.</p>
       </div>
-
       <div>
         <div class="footer-title">Location</div>
         <p>Sector F3, Main Kotli Road, Mirpur, New Mirpur City, 10250</p>
       </div>
-
       <div>
         <div class="footer-title">Contact</div>
         <p><a href="tel:+923410576603" class="footer-phone-link">+92 341 0576603</a></p>
       </div>
-
     </div>
-
-    <div class="footer-bottom">
-      © 2026 Farhan Mughal Auto Electrician
-    </div>
+    <div class="footer-bottom">© 2026 Farhan Mughal Auto Electrician</div>
   </footer>
 
   <script src="about.js" defer></script>
-
 </body>
-
 </html>

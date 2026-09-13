@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Always start at the top of the page on load/refresh — even if the address
-       bar still has a #section hash left over from an earlier click, e.g. #contact.
-       Must run before the browser tries to scroll to that anchor, so it sits
-       first, before anything else in <head>. -->
-        <script src="scroll-fix.js"></script>
+  <!-- Must run before anything else: resets scroll position on load/refresh
+       even if the URL still has a leftover #hash from an earlier click. -->
+  <script src="scroll-fix.js"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="format-detection" content="telephone=no">
   <title>Auto Electrician in Mirpur | EFI & ECU Diagnostics | Farhan Mughal</title>
 
-  <!-- Local SEO essentials -->
   <meta name="description" content="Car electrical faults found and fixed in Mirpur. EFI tune-ups, ECU diagnostics, wiring and battery faults. Sector F3, Main Kotli Road. Open 9am–9pm, closed Friday. Call +92 341 0576603.">
   <link rel="canonical" href="https://farhanauto.netlify.app/">
 
-  <!-- Open Graph — controls how the page looks when shared on WhatsApp/Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Farhan Mughal Auto Electrician">
   <meta property="og:title" content="Farhan Mughal Auto Electrician — Mirpur">
@@ -28,7 +23,6 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_PK">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Farhan Mughal Auto Electrician — Mirpur">
   <meta name="twitter:description" content="EFI, ECU and auto-electrical faults diagnosed properly. Sector F3, Mirpur.">
@@ -39,17 +33,10 @@
   <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- MapLibre GL JS (powers the interactive "Find Us Live" map below) -->
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 
-  <!-- Structured data, loaded from an external file instead of inline -->
   <script type="application/ld+json" src="schema.json"></script>
-  <style>
-  </style>
-
 </head>
 
 <body>
@@ -59,7 +46,6 @@
         +92 341 0576603
       </a>
     </div>
-
     <div class="top-bar-right">
       Sector F3, Main Kotli Road, Mirpur, New Mirpur City, 10250
     </div>
@@ -67,23 +53,21 @@
 
   <!-- NAV -->
   <div class="navbar">
-    <div class="logo">
-      FM <span>Auto Electrician</span>
-    </div>
+    <div class="logo">FM <span>Auto Electrician</span></div>
 
-    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidebar">
-      ☰
-    </button>
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidebar">☰</button>
 
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="tel:+923410576603"  style="color: white;"  class="btn">Call Us</a></li>
+      <li><a href="tel:+923410576603" class="btn" style="color:white;">Call Us</a></li>
     </ul>
   </div>
 
+  <!-- inert keeps this out of the tab order and accessibility tree while
+       closed; script.js removes it when the menu opens. -->
   <div class="sidebar" id="sidebar" aria-hidden="true" inert>
     <div class="close-btn" id="closeBtn" role="button" tabindex="0" aria-label="Close menu">✕</div>
     <a href="#home">Home</a>
@@ -96,21 +80,16 @@
 
   <!-- HERO -->
   <div class="hero" id="home">
-
-    <!-- Background video: replace the src below with your own .mp4 to change the looping hero background -->
+    <!-- Click-to-play would be even lighter, but keeping autoplay here per
+         current design; poster covers the load-in gap. -->
     <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
       <source src="videos/wv.mp4">
     </video>
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-
       <p class="tagline">🔧 Trusted Auto Electrician in Mirpur</p>
-
-      <h1>
-        Expert Car Electrical Repair & Diagnostics You Can Trust
-      </h1>
-
+      <h1>Expert Car Electrical Repair & Diagnostics You Can Trust</h1>
       <p class="subtext">
         Fast diagnostics, honest pricing, and professional repair work for all types of vehicles.
         Your car is fixed right the first time.
@@ -133,736 +112,304 @@
         <div><strong>500+</strong><span>Cars Fixed</span></div>
         <div><strong>4.9★</strong><span>Customer Rating</span></div>
       </div>
-
     </div>
   </div>
 
-
-  <!-- SHOP SHOWCASE (image thumbnail section) -->
-  <!-- =========================================================
-     WORKSHOP + ORIGINAL POSTER
-     ========================================================= -->
-<section id="showcase" class="workshop-section">
-
-  <div class="workshop-heading">
-
-    <span class="workshop-eyebrow">
-      INSIDE THE WORKSHOP
-    </span>
-
-    <h2>
-      See the work.<br>
-      <span>See the checklist.</span>
-    </h2>
-
-    <p>
-      Our physical workshop and EFI checklist are part of the
-      service customers can see for themselves.
-    </p>
-
-  </div>
-
-
-  <div class="workshop-grid">
-
-    <!-- WORKSHOP IMAGE -->
-
-    <div class="workshop-main-card">
-
-      <img
-      src="images/thumb.jfif"
-      alt="Farhan Mughal Auto Electrician workshop"
-      width="1600"
-      height="958"
-      fetchpriority="high"
-      decoding="async"
-    >
-
-      <div class="workshop-image-overlay">
-
-        <div>
-          <span>OUR WORKSHOP</span>
-          <h3>Farhan Mughal Auto Electrician</h3>
-        </div>
-
-        <span class="workshop-arrow">↗</span>
-
-      </div>
-
+  <!-- WORKSHOP + POSTER -->
+  <section id="showcase" class="workshop-section">
+    <div class="workshop-heading">
+      <span class="workshop-eyebrow">INSIDE THE WORKSHOP</span>
+      <h2>See the work.<br><span>See the checklist.</span></h2>
+      <p>Our physical workshop and EFI checklist are part of the service customers can see for themselves.</p>
     </div>
 
-
-    <!-- POSTER CARD -->
-
-    <div class="poster-card">
-
-      <div class="poster-card-header">
-
-        <div>
-          <span>EFI EXPERTISE</span>
-          <h3>Our Workshop Checklist</h3>
+    <div class="workshop-grid">
+      <div class="workshop-main-card">
+        <img src="images/thumb.jfif" alt="Farhan Mughal Auto Electrician workshop"
+             width="1600" height="958" fetchpriority="high" decoding="async">
+        <div class="workshop-image-overlay">
+          <div>
+            <span>OUR WORKSHOP</span>
+            <h3>Farhan Mughal Auto Electrician</h3>
+          </div>
+          <span class="workshop-arrow">↗</span>
         </div>
-
-        <span class="poster-number">01</span>
-
       </div>
 
-
-      <div class="poster-image-wrap">
-
-        <img
-          src="images/efi-checklist-h.jfif"
-          alt="EFI engine tune-up cleaning checklist"
-          loading="lazy"
-        >
-
-        <button
-          type="button"
-          class="poster-view-btn"
-          id="openPoster"
-        >
-          <span>+</span>
-          View Full Checklist
-        </button>
-
-      </div>
-
-
-      <p class="poster-description">
-        The original checklist used in the workshop for EFI
-        engine tune-up and inspection services.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     POSTER LIGHTBOX
-     ========================================================= -->
-<div
-  class="efi-modal"
-  id="efiModal"
-  aria-hidden="true"
->
-
-  <div class="efi-modal-backdrop" id="efiModalBackdrop"></div>
-
-  <div class="efi-modal-content">
-
-    <button
-      type="button"
-      class="efi-modal-close"
-      id="closeEfiModal"
-      aria-label="Close checklist"
-    >
-      ×
-    </button>
-
-    <div class="efi-modal-title">
-      <span>EFI ENGINE TUNE-UP</span>
-      <h2>Workshop Checklist</h2>
-    </div>
-
-    <div class="efi-modal-image">
-      <img
-        src="images/efi-checklist.jfif"
-        alt="Original EFI engine tune-up workshop checklist"
-      >
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-
-
-<!-- =========================================================
-     FEATURED EFI CHECKLIST
-     ========================================================= -->
-     <section id="efi-checklist" class="efi-section">
-
-      <div class="efi-container">
-    
-        <div class="efi-intro">
-    
-          <span class="efi-eyebrow">
-            EFI ENGINE TUNE-UP
-          </span>
-    
-          <h2>
-            A Complete Check.<br>
-            <span>Not Just a Quick Look.</span>
-          </h2>
-    
-          <p>
-            Our EFI tune-up covers the fuel system, engine, sensors,
-            throttle system and computerized diagnostics in one
-            structured inspection.
-          </p>
-    
-          <div class="efi-mini-stats">
-    
-            <div class="efi-mini-stat">
-              <span class="efi-stat-icon">01</span>
-              <div>
-                <strong>Fuel System</strong>
-                <small>Injectors & pressure</small>
-              </div>
-            </div>
-    
-            <div class="efi-mini-stat">
-              <span class="efi-stat-icon">02</span>
-              <div>
-                <strong>Engine</strong>
-                <small>Plugs, coils & pressure</small>
-              </div>
-            </div>
-    
-            <div class="efi-mini-stat">
-              <span class="efi-stat-icon">03</span>
-              <div>
-                <strong>Sensors</strong>
-                <small>MAP, MAF & TPS</small>
-              </div>
-            </div>
-    
-            <div class="efi-mini-stat">
-              <span class="efi-stat-icon">04</span>
-              <div>
-                <strong>ECU</strong>
-                <small>Computerized scanning</small>
-              </div>
-            </div>
-    
+      <div class="poster-card">
+        <div class="poster-card-header">
+          <div>
+            <span>EFI EXPERTISE</span>
+            <h3>Our Workshop Checklist</h3>
           </div>
-    
-          <div class="efi-actions">
-    
-            <button type="button" class="efi-text-btn" id="openEfiChecklist">
-              View Full Checklist
-              <span>↗</span>
-            </button>
-          </div>
-    
-        </div>
-    
-    
-        <!-- DIGITAL CHECKLIST CARD -->
-    
-        <div class="efi-check-card">
-    
-          <div class="efi-card-top">
-    
-            <div>
-              <span class="efi-card-label">WORKSHOP CHECKLIST</span>
-              <h3>EFI System Inspection</h3>
-            </div>
-    
-            <div class="efi-status">
-              <span></span>
-              CHECK
-            </div>
-    
-          </div>
-    
-    
-          <div class="efi-progress">
-            <div class="efi-progress-line">
-              <span></span>
-            </div>
-    
-            <div class="efi-progress-text">
-              <span>Inspection Coverage</span>
-              <strong>Complete System</strong>
-            </div>
-          </div>
-    
-    
-          <div class="efi-check-items">
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Fuel injector testing</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Ultrasonic injector cleaning</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Spark plug & air filter check</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Air flow sensor inspection</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Throttle body cleaning</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>MAP / MAF / TPS sensors</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Full ECU scan</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Fuel pressure check</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Throttle calibration</span>
-            </div>
-    
-            <div class="efi-check-item">
-              <span class="check-mark">✓</span>
-              <span>Engine pressure check</span>
-            </div>
-    
-          </div>
-    
-    
-          <div class="efi-card-bottom">
-            <span>Based on our workshop EFI checklist</span>
-    
-            <button type="button" id="openEfiChecklist2">
-              View Original Poster →
-            </button>
-          </div>
-    
-        </div>
-    
-      </div>
-    
-    </section>
-
-
-
-<!-- =========================================================
-     SERVICES
-     ========================================================= -->
-     <section id="services" class="services-section-v2">
-
-      <p class="services-eyebrow">
-        WHAT WE DO
-      </p>
-    
-      <h2 class="services-heading">
-        Our Services
-      </h2>
-    
-      <p class="services-subtext">
-        From EFI diagnostics and engine tune-ups to electrical
-        troubleshooting and essential vehicle checks.
-      </p>
-    
-    
-      <!-- FEATURED SERVICE (no longer a link — display/animation only) -->
-    
-      <div class="featured-efi-service">
-    
-        <div class="featured-efi-content">
-    
-          <div class="featured-efi-tag">
-            SPECIALIZED SERVICE
-          </div>
-    
-          <h3>
-            EFI Engine<br>
-            <span>Tune-Up</span>
-          </h3>
-    
-          <p>
-            Fuel system testing, injector cleaning, sensor
-            inspection, throttle service and computerized
-            diagnostics.
-          </p>
-    
-        </div>
-    
-    
-        <div class="featured-efi-visual">
-    
-          <div class="efi-ring efi-ring-1"></div>
-          <div class="efi-ring efi-ring-2"></div>
-    
-          <div class="efi-engine-symbol">
-            EFI
-          </div>
-    
-          <div class="efi-floating-card efi-floating-top">
-            <span>✓</span>
-            ECU Scan
-          </div>
-    
-          <div class="efi-floating-card efi-floating-bottom">
-            <span>✓</span>
-            Fuel System
-          </div>
-    
-        </div>
-    
-      </div>
-    
-    
-      <!-- NORMAL SERVICES (no longer links — display/animation only) -->
-    
-      <div class="services-grid-v2">
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">⚡</div>
-          <h3>Auto Electrical</h3>
-          <p>Wiring & electrical faults</p>
-        </div>
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">◉</div>
-          <h3>Computer Diagnostics</h3>
-          <p>ECU scanning & fault diagnosis</p>
-        </div>
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">◌</div>
-          <h3>Fuel System</h3>
-          <p>Injector testing & cleaning</p>
-        </div>
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">◈</div>
-          <h3>Throttle & Sensors</h3>
-          <p>Cleaning & calibration</p>
-        </div>
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">❄</div>
-          <h3>A/C Inspection</h3>
-          <p>Air conditioning inspection</p>
-        </div>
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">◍</div>
-          <h3>Oil Service</h3>
-          <p>Oil & filter service</p>
-        </div>
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">◉</div>
-          <h3>Brake Service</h3>
-          <p>Brake inspection & repair</p>
-        </div>
-    
-        <div class="service-card-v2">
-          <div class="service-icon-v2">▣</div>
-          <h3>Battery</h3>
-          <p>Testing & replacement</p>
-        </div>
-    
-      </div>
-    
-    </section>
-  
-
-<!-- =========================================================
-     WHY CHOOSE US
-     ========================================================= -->
-
-     <section id="why-us" class="why-section">
-
-      <div class="why-container">
-    
-        <!-- SECTION HEADER -->
-        <div class="why-header">
-    
-          <div class="why-heading">
-    
-            <span class="why-label">WHY CHOOSE US</span>
-    
-            <h2>
-              Reliable Work.<br>
-              <span>Honest Service.</span>
-            </h2>
-    
-          </div>
-    
-          <p class="why-intro">
-            From electrical faults to engine diagnostics, we focus on
-            finding the real problem and providing the right solution
-            for your vehicle.
-          </p>
-    
-        </div>
-    
-    
-        <!-- FEATURES -->
-        <div class="why-grid">
-    
-          <!-- FEATURE 1 -->
-          <div class="why-card">
-    
-            <div class="why-card-top">
-              <span class="why-icon">✓</span>
-              <span class="why-small">01</span>
-            </div>
-    
-            <h3>Honest Diagnosis</h3>
-    
-            <p>
-              We identify the actual fault before recommending
-              repairs or replacing parts.
-            </p>
-    
-            <div class="why-accent"></div>
-    
-          </div>
-    
-    
-          <!-- FEATURE 2 -->
-          <div class="why-card">
-    
-            <div class="why-card-top">
-              <span class="why-icon">⚡</span>
-              <span class="why-small">02</span>
-            </div>
-    
-            <h3>Auto Electrical Expertise</h3>
-    
-            <p>
-              Specialized attention to wiring, sensors, starting,
-              charging and other vehicle electrical systems.
-            </p>
-    
-            <div class="why-accent"></div>
-    
-          </div>
-    
-    
-          <!-- FEATURE 3 -->
-          <div class="why-card">
-    
-            <div class="why-card-top">
-              <span class="why-icon">⌕</span>
-              <span class="why-small">03</span>
-            </div>
-    
-            <h3>Modern Diagnostics</h3>
-    
-            <p>
-              Proper scanning and testing helps locate electronic
-              and engine-related faults more accurately.
-            </p>
-    
-            <div class="why-accent"></div>
-    
-          </div>
-    
-    
-          <!-- FEATURE 4 -->
-          <div class="why-card">
-    
-            <div class="why-card-top">
-              <span class="why-icon">↗</span>
-              <span class="why-small">04</span>
-            </div>
-    
-            <h3>Clear Communication</h3>
-    
-            <p>
-              We explain the problem and the work required so you
-              can make the right decision for your vehicle.
-            </p>
-    
-            <div class="why-accent"></div>
-    
-          </div>
-    
-    
-          <!-- FEATURE 5 -->
-          <div class="why-card">
-    
-            <div class="why-card-top">
-              <span class="why-icon">+</span>
-              <span class="why-small">05</span>
-            </div>
-    
-            <h3>Careful Work</h3>
-    
-            <p>
-              Every repair is handled with attention to the fault,
-              the repair process and the condition of your vehicle.
-            </p>
-    
-            <div class="why-accent"></div>
-    
-          </div>
-    
-    
-          <!-- CONTACT CARD -->
-          <div class="why-contact-card">
-    
-            <span class="why-contact-label">NEED VEHICLE HELP?</span>
-    
-            <h3>
-              Let's Find<br>
-              The Problem.
-            </h3>
-    
-            <p>
-              Electrical, EFI or engine issue?
-              Get in touch with us.
-            </p>
-    
-            <a href="#contact" class="why-contact-btn">
-              Contact Us
-              <span>→</span>
-            </a>
-    
-          </div>
-    
-        </div>
-    
-      </div>
-    
-    </section>
-
-  <section id="problems" class="problems-marquee-section">
-    <h2 class="section-title">Common Problems We Fix</h2>
-
-    <div class="problems-marquee-wrap">
-      <div class="problems-marquee-track">
-
-        <!-- SET 1 -->
-        <div class="problem-slide">
-          <img src="https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?auto=format&fit=crop&w=900&q=80" alt="Maintenance">
-          <h3 class="problem-title-overlay">Starting, battery and electrical faults</h3>
+          <span class="poster-number">01</span>
         </div>
 
-        <div class="problem-slide">
-          <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=700&q=80" alt="Gearbox">
-          <h3 class="problem-title-overlay">Engine warning lights and diagnostic faults</h3>
+        <div class="poster-image-wrap">
+          <img src="images/efi-checklist-h.jfif" alt="EFI engine tune-up cleaning checklist" loading="lazy">
+          <button type="button" class="poster-view-btn" id="openPoster"><span>+</span> View Full Checklist</button>
         </div>
 
-        <div class="problem-slide">
-          <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=700&q=80" alt="Fluids">
-          <h3 class="problem-title-overlay">Wiring, lights, sensors and electrical faults</h3>
-        </div>
-
-        <div class="problem-slide">
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80" alt="Diagnostics">
-          <h3 class="problem-title-overlay">Battery, alternator and charging system issues</h3>
-        </div>
-
-        <div class="problem-slide">
-          <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=700&q=80" alt="Wiring">
-          <h3 class="problem-title-overlay">EFI & engine performance faults</h3>
-        </div>
-
-        <div class="problem-slide">
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80" alt="Warning">
-          <h3 class="problem-title-overlay">Starting, battery and electrical faults</h3>
-        </div>
-
-        <!-- SET 2 (duplicate for seamless loop) -->
-        <div class="problem-slide" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=700&q=80" alt="">
-          <h3 class="problem-title-overlay">Engine warning lights and diagnostic faults</h3>
-        </div>
-
-        <div class="problem-slide" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=700&q=80" alt="">
-          <h3 class="problem-title-overlay">Wiring, lights, sensors and electrical faults</h3>
-        </div>
-
-        <div class="problem-slide" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=700&q=80" alt="">
-          <h3 class="problem-title-overlay">Battery, alternator and charging system issues</h3>
-        </div>
-
-        <div class="problem-slide" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80" alt="">
-          <h3 class="problem-title-overlay">EFI & engine performance faults</h3>
-        </div>
-
-        <div class="problem-slide" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=700&q=80" alt="">
-          <h3 class="problem-title-overlay">Dashboard warnings and electronic system faults</h3>
-        </div>
-
-
+        <p class="poster-description">
+          The original checklist used in the workshop for EFI engine tune-up and inspection services.
+        </p>
       </div>
     </div>
   </section>
 
+  <!-- POSTER LIGHTBOX -->
+  <div class="efi-modal" id="efiModal" aria-hidden="true">
+    <div class="efi-modal-backdrop" id="efiModalBackdrop"></div>
+    <div class="efi-modal-content">
+      <button type="button" class="efi-modal-close" id="closeEfiModal" aria-label="Close checklist">×</button>
+      <div class="efi-modal-title">
+        <span>EFI ENGINE TUNE-UP</span>
+        <h2>Workshop Checklist</h2>
+      </div>
+      <div class="efi-modal-image">
+        <img src="images/efi-checklist.jfif" alt="Original EFI engine tune-up workshop checklist">
+      </div>
+    </div>
+  </div>
 
+  <!-- FEATURED EFI CHECKLIST -->
+  <section id="efi-checklist" class="efi-section">
+    <div class="efi-container">
+      <div class="efi-intro">
+        <span class="efi-eyebrow">EFI ENGINE TUNE-UP</span>
+        <h2>A Complete Check.<br><span>Not Just a Quick Look.</span></h2>
+        <p>Our EFI tune-up covers the fuel system, engine, sensors, throttle system and computerized diagnostics in one structured inspection.</p>
+
+        <div class="efi-mini-stats">
+          <div class="efi-mini-stat">
+            <span class="efi-stat-icon">01</span>
+            <div><strong>Fuel System</strong><small>Injectors & pressure</small></div>
+          </div>
+          <div class="efi-mini-stat">
+            <span class="efi-stat-icon">02</span>
+            <div><strong>Engine</strong><small>Plugs, coils & pressure</small></div>
+          </div>
+          <div class="efi-mini-stat">
+            <span class="efi-stat-icon">03</span>
+            <div><strong>Sensors</strong><small>MAP, MAF & TPS</small></div>
+          </div>
+          <div class="efi-mini-stat">
+            <span class="efi-stat-icon">04</span>
+            <div><strong>ECU</strong><small>Computerized scanning</small></div>
+          </div>
+        </div>
+
+        <div class="efi-actions">
+          <button type="button" class="efi-text-btn" id="openEfiChecklist">View Full Checklist <span>↗</span></button>
+        </div>
+      </div>
+
+      <div class="efi-check-card">
+        <div class="efi-card-top">
+          <div>
+            <span class="efi-card-label">WORKSHOP CHECKLIST</span>
+            <h3>EFI System Inspection</h3>
+          </div>
+          <div class="efi-status"><span></span> CHECK</div>
+        </div>
+
+        <div class="efi-progress">
+          <div class="efi-progress-line"><span></span></div>
+          <div class="efi-progress-text">
+            <span>Inspection Coverage</span>
+            <strong>Complete System</strong>
+          </div>
+        </div>
+
+        <div class="efi-check-items">
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Fuel injector testing</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Ultrasonic injector cleaning</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Spark plug & air filter check</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Air flow sensor inspection</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Throttle body cleaning</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>MAP / MAF / TPS sensors</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Full ECU scan</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Fuel pressure check</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Throttle calibration</span></div>
+          <div class="efi-check-item"><span class="check-mark">✓</span><span>Engine pressure check</span></div>
+        </div>
+
+        <div class="efi-card-bottom">
+          <span>Based on our workshop EFI checklist</span>
+          <button type="button" id="openEfiChecklist2">View Original Poster →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-section-v2">
+    <p class="services-eyebrow">WHAT WE DO</p>
+    <h2 class="services-heading">Our Services</h2>
+    <p class="services-subtext">From EFI diagnostics and engine tune-ups to electrical troubleshooting and essential vehicle checks.</p>
+
+    <div class="featured-efi-service">
+      <div class="featured-efi-content">
+        <div class="featured-efi-tag">SPECIALIZED SERVICE</div>
+        <h3>EFI Engine<br><span>Tune-Up</span></h3>
+        <p>Fuel system testing, injector cleaning, sensor inspection, throttle service and computerized diagnostics.</p>
+      </div>
+      <div class="featured-efi-visual">
+        <div class="efi-ring efi-ring-1"></div>
+        <div class="efi-ring efi-ring-2"></div>
+        <div class="efi-engine-symbol">EFI</div>
+        <div class="efi-floating-card efi-floating-top"><span>✓</span> ECU Scan</div>
+        <div class="efi-floating-card efi-floating-bottom"><span>✓</span> Fuel System</div>
+      </div>
+    </div>
+
+    <div class="services-grid-v2">
+      <div class="service-card-v2"><div class="service-icon-v2">⚡</div><h3>Auto Electrical</h3><p>Wiring & electrical faults</p></div>
+      <div class="service-card-v2"><div class="service-icon-v2">◉</div><h3>Computer Diagnostics</h3><p>ECU scanning & fault diagnosis</p></div>
+      <div class="service-card-v2"><div class="service-icon-v2">◌</div><h3>Fuel System</h3><p>Injector testing & cleaning</p></div>
+      <div class="service-card-v2"><div class="service-icon-v2">◈</div><h3>Throttle & Sensors</h3><p>Cleaning & calibration</p></div>
+      <div class="service-card-v2"><div class="service-icon-v2">❄</div><h3>A/C Inspection</h3><p>Air conditioning inspection</p></div>
+      <div class="service-card-v2"><div class="service-icon-v2">◍</div><h3>Oil Service</h3><p>Oil & filter service</p></div>
+      <div class="service-card-v2"><div class="service-icon-v2">◉</div><h3>Brake Service</h3><p>Brake inspection & repair</p></div>
+      <div class="service-card-v2"><div class="service-icon-v2">▣</div><h3>Battery</h3><p>Testing & replacement</p></div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="why-us" class="why-section">
+    <div class="why-container">
+      <div class="why-header">
+        <div class="why-heading">
+          <span class="why-label">WHY CHOOSE US</span>
+          <h2>Reliable Work.<br><span>Honest Service.</span></h2>
+        </div>
+        <p class="why-intro">From electrical faults to engine diagnostics, we focus on finding the real problem and providing the right solution for your vehicle.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-top"><span class="why-icon">✓</span><span class="why-small">01</span></div>
+          <h3>Honest Diagnosis</h3>
+          <p>We identify the actual fault before recommending repairs or replacing parts.</p>
+          <div class="why-accent"></div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-top"><span class="why-icon">⚡</span><span class="why-small">02</span></div>
+          <h3>Auto Electrical Expertise</h3>
+          <p>Specialized attention to wiring, sensors, starting, charging and other vehicle electrical systems.</p>
+          <div class="why-accent"></div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-top"><span class="why-icon">⌕</span><span class="why-small">03</span></div>
+          <h3>Modern Diagnostics</h3>
+          <p>Proper scanning and testing helps locate electronic and engine-related faults more accurately.</p>
+          <div class="why-accent"></div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-top"><span class="why-icon">↗</span><span class="why-small">04</span></div>
+          <h3>Clear Communication</h3>
+          <p>We explain the problem and the work required so you can make the right decision for your vehicle.</p>
+          <div class="why-accent"></div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-top"><span class="why-icon">+</span><span class="why-small">05</span></div>
+          <h3>Careful Work</h3>
+          <p>Every repair is handled with attention to the fault, the repair process and the condition of your vehicle.</p>
+          <div class="why-accent"></div>
+        </div>
+        <div class="why-contact-card">
+          <span class="why-contact-label">NEED VEHICLE HELP?</span>
+          <h3>Let's Find<br>The Problem.</h3>
+          <p>Electrical, EFI or engine issue? Get in touch with us.</p>
+          <a href="#contact" class="why-contact-btn">Contact Us <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMON PROBLEMS MARQUEE -->
+  <section id="problems" class="problems-marquee-section">
+    <h2 class="section-title">Common Problems We Fix</h2>
+    <div class="problems-marquee-wrap">
+      <div class="problems-marquee-track">
+        <div class="problem-slide">
+          <img src="https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?auto=format&fit=crop&w=900&q=80" alt="Maintenance">
+          <h3 class="problem-title-overlay">Starting, battery and electrical faults</h3>
+        </div>
+        <div class="problem-slide">
+          <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=700&q=80" alt="Gearbox">
+          <h3 class="problem-title-overlay">Engine warning lights and diagnostic faults</h3>
+        </div>
+        <div class="problem-slide">
+          <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=700&q=80" alt="Fluids">
+          <h3 class="problem-title-overlay">Wiring, lights, sensors and electrical faults</h3>
+        </div>
+        <div class="problem-slide">
+          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80" alt="Diagnostics">
+          <h3 class="problem-title-overlay">Battery, alternator and charging system issues</h3>
+        </div>
+        <div class="problem-slide">
+          <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=700&q=80" alt="Wiring">
+          <h3 class="problem-title-overlay">EFI & engine performance faults</h3>
+        </div>
+        <div class="problem-slide">
+          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80" alt="Warning">
+          <h3 class="problem-title-overlay">Starting, battery and electrical faults</h3>
+        </div>
+        <!-- duplicate set, aria-hidden, for the seamless marquee loop -->
+        <div class="problem-slide" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=700&q=80" alt="">
+          <h3 class="problem-title-overlay">Engine warning lights and diagnostic faults</h3>
+        </div>
+        <div class="problem-slide" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=700&q=80" alt="">
+          <h3 class="problem-title-overlay">Wiring, lights, sensors and electrical faults</h3>
+        </div>
+        <div class="problem-slide" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=700&q=80" alt="">
+          <h3 class="problem-title-overlay">Battery, alternator and charging system issues</h3>
+        </div>
+        <div class="problem-slide" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80" alt="">
+          <h3 class="problem-title-overlay">EFI & engine performance faults</h3>
+        </div>
+        <div class="problem-slide" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=700&q=80" alt="">
+          <h3 class="problem-title-overlay">Dashboard warnings and electronic system faults</h3>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- VIDEO -->
   <section id="video" class="video-section">
     <div class="video-container">
-
       <div class="video-text">
         <h2>See Our Workshop <br>in Action</h2>
-        <p>
-          Real repairs, real mechanics, real results. Watch how our expert team handles complex diagnostics and
-          precision electrical servicing in real-time.
-        </p>
+        <p>Real repairs, real mechanics, real results. Watch how our expert team handles complex diagnostics and precision electrical servicing in real-time.</p>
         <ul>
           <li>Advanced engine diagnostics</li>
           <li>Specialized electrical repair expertise</li>
           <li>Fast, transparent & reliable service</li>
         </ul>
       </div>
-
       <div class="video-box">
         <video class="workshop-video" muted playsinline loop preload="metadata">
           <source src="videos/wv.mp4" type="video/mp4">
         </video>
       </div>
-
     </div>
   </section>
 
+  <!-- BRANDS MARQUEE -->
   <section id="brands" class="brands-marquee-section">
     <h2 class="brands-marquee-heading">We Service All Foreign and Domestic Makes</h2>
-
     <div class="marquee-wrap">
       <div class="marquee-track">
-        <span>Toyota</span>
-        <span>Honda</span>
-        <span>Suzuki</span>
-        <span>Hyundai</span>
-        <span>Kia</span>
-        <span>MG</span>
-        <span>Daihatsu</span>
-        <span>Nissan</span>
-        <span>Changan</span>
-        <span>Proton</span>
-        <span>Toyota</span>
-        <span>Honda</span>
-        <span>Suzuki</span>
-        <span>Hyundai</span>
-        <span>Kia</span>
-        <span>MG</span>
-        <span>Daihatsu</span>
-        <span>Nissan</span>
-        <span>Changan</span>
-        <span>Proton</span>
+        <span>Toyota</span><span>Honda</span><span>Suzuki</span><span>Hyundai</span><span>Kia</span>
+        <span>MG</span><span>Daihatsu</span><span>Nissan</span><span>Changan</span><span>Proton</span>
+        <span>Toyota</span><span>Honda</span><span>Suzuki</span><span>Hyundai</span><span>Kia</span>
+        <span>MG</span><span>Daihatsu</span><span>Nissan</span><span>Changan</span><span>Proton</span>
       </div>
     </div>
   </section>
@@ -874,7 +421,7 @@
     </div>
   </section>
 
-  <!-- WORKSHOP GALLERY SLIDER -->
+  <!-- GALLERY -->
   <section id="gallery" class="gallery-section-v2">
     <div class="gallery-header-v2">
       <h2 class="gallery-heading-v2">Explore The Workshop</h2>
@@ -886,8 +433,7 @@
 
     <div class="gallery-track-v2" id="galleryTrack">
       <div class="gallery-slide-v2 wide">
-        <img src="images/thumb.jfif"
-          alt="Service bay">
+        <img src="images/thumb.jfif" alt="Service bay">
         <span class="gallery-caption-v2"></span>
       </div>
       <div class="gallery-slide-v2">
@@ -899,36 +445,26 @@
         <span class="gallery-caption-v2"></span>
       </div>
       <div class="gallery-slide-v2">
-        <img src="images/WhatsApp Image 2026-09-05 at 10.16.50 AM (1).jpeg"
-          alt="Tool wall">
+        <img src="images/WhatsApp Image 2026-09-05 at 10.16.50 AM (1).jpeg" alt="Tool wall">
         <span class="gallery-caption-v2"></span>
       </div>
       <div class="gallery-slide-v2 wide">
-        <img src="images/vGemini_Generated_Image_2xnocf2xnocf2xno.jfif"
-          alt="Waiting area">
+        <img src="images/vGemini_Generated_Image_2xnocf2xnocf2xno.jfif" alt="Waiting area">
         <span class="gallery-caption-v2"></span>
       </div>
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- STATS — real numbers ship in HTML; script.js only animates them -->
   <section>
     <div class="stats">
-      <div class="stat">
-        <h2 class="count" data-target="500" data-suffix="+">500+</h2>
-        <p>Cars Fixed</p>
-      </div>
-      <div class="stat">
-        <h2 class="count" data-target="10" data-suffix="+">10+</h2>
-        <p>Years Experience</p>
-      </div>
-      <div class="stat">
-        <h2 class="count" data-target="100" data-suffix="%">100%</h2>
-        <p>Trust %</p>
-      </div>
+      <div class="stat"><h2 class="count" data-target="500" data-suffix="+">500+</h2><p>Cars Fixed</p></div>
+      <div class="stat"><h2 class="count" data-target="10" data-suffix="+">10+</h2><p>Years Experience</p></div>
+      <div class="stat"><h2 class="count" data-target="100" data-suffix="%">100%</h2><p>Trust %</p></div>
     </div>
   </section>
 
+  <!-- REVIEWS -->
   <section id="reviews">
     <h2 class="section-title">What Customers Say</h2>
 
@@ -943,290 +479,220 @@
           <p>Based on 120+ Google Reviews</p>
         </div>
       </div>
-      <a href="https://www.google.com/search?q=farhan+mughal+auto+electrician" target="_blank" rel="noopener"
-        class="btn blue google-review-btn">Write a Review</a>
+      <a href="https://www.google.com/search?q=farhan+mughal+auto+electrician" target="_blank" rel="noopener" class="btn blue google-review-btn">Write a Review</a>
     </div>
 
     <div class="review-grid google-style">
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#4f46e5;">S</div>
-          <div>
-            <h4>Sheraz Shaukat</h4>
-            <span>4 years ago</span>
-          </div>
+          <div><h4>Sheraz Shaukat</h4><span>4 years ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>i have been his client from last 3 years and alkhumdulillah always had a satisfying work on my cars in such a decent prices</p>
       </div>
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#0ea5e9;">H</div>
-          <div>
-            <h4>Hassan Ali</h4>
-            <span>3 years ago</span>
-          </div>
+          <div><h4>Hassan Ali</h4><span>3 years ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>Very good electrician i have ever seen in my life. Fast service and excellent work by him.</p>
       </div>
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#e11d48;">W</div>
-          <div>
-            <h4>Waheed Malak</h4>
-            <span>3 years ago</span>
-          </div>
+          <div><h4>Waheed Malak</h4><span>3 years ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>Good work All. Car electrician service in mirpur</p>
       </div>
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#7c3aed;">A</div>
-          <div>
-            <h4>AQIB BUTT</h4>
-            <span>2 years ago</span>
-          </div>
+          <div><h4>AQIB BUTT</h4><span>2 years ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>Good electrician car work in mirpur</p>
       </div>
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#059669;">R</div>
-          <div>
-            <h4>Rizwan Ch</h4>
-            <span>a year ago</span>
-          </div>
+          <div><h4>Rizwan Ch</h4><span>a year ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>Very good service</p>
       </div>
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#d97706;">I</div>
-          <div>
-            <h4>Imran ch</h4>
-            <span>3 years ago</span>
-          </div>
+          <div><h4>Imran ch</h4><span>3 years ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>Good works in car</p>
       </div>
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#db2777;">M</div>
-          <div>
-            <h4>Muhammad Tariq</h4>
-            <span>3 years ago</span>
-          </div>
+          <div><h4>Muhammad Tariq</h4><span>3 years ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>good experience</p>
       </div>
-
       <div class="review-card">
         <div class="review-top">
           <div class="avatar" style="background:#334155;">T</div>
-          <div>
-            <h4>Tasawar Hussain</h4>
-            <span>a month ago</span>
-          </div>
+          <div><h4>Tasawar Hussain</h4><span>a month ago</span></div>
         </div>
         <div class="stars">★★★★★</div>
         <p>Good work</p>
         <div style="margin-top:6px;font-size:13px;color:#5f6368;">Services: Electrical</div>
       </div>
-
     </div>
   </section>
 
+  <!-- TUNING FEES -->
+  <section class="tuning-fees-section" id="tuning-fees">
+    <div class="tuning-fees-flag"></div>
 
+    <!-- Icon sprite, referenced by <use> in each card below -->
+    <svg style="display:none">
+      <symbol id="car-suv" viewBox="0 0 240 100">
+        <path d="M14 72 L18 46 Q22 36 34 34 L52 20 Q58 14 68 14 L168 14 Q178 14 184 22 L200 36 Q216 38 222 48 L226 72 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="6" y1="10" x2="180" y2="10" stroke="currentColor" stroke-width="3"/>
+        <line x1="14" y1="72" x2="226" y2="72" stroke="currentColor" stroke-width="4"/>
+        <path d="M58 20 L58 36 M68 14 L68 36 M168 14 L168 36 M184 22 L172 36" fill="none" stroke="currentColor" stroke-width="3"/>
+        <line x1="58" y1="36" x2="172" y2="36" stroke="currentColor" stroke-width="3"/>
+        <circle cx="62" cy="74" r="16" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="62" cy="74" r="5" fill="currentColor"/>
+        <circle cx="182" cy="74" r="16" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="182" cy="74" r="5" fill="currentColor"/>
+      </symbol>
+      <symbol id="car-van" viewBox="0 0 240 100">
+        <path d="M14 72 L14 32 Q14 16 30 16 L196 16 Q212 16 216 30 L222 44 Q226 48 226 56 L226 72 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="14" y1="72" x2="226" y2="72" stroke="currentColor" stroke-width="4"/>
+        <line x1="14" y1="36" x2="216" y2="36" stroke="currentColor" stroke-width="3"/>
+        <line x1="70" y1="36" x2="70" y2="16" stroke="currentColor" stroke-width="3"/>
+        <line x1="126" y1="36" x2="126" y2="16" stroke="currentColor" stroke-width="3"/>
+        <line x1="182" y1="36" x2="182" y2="16" stroke="currentColor" stroke-width="3"/>
+        <circle cx="58" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="58" cy="74" r="5" fill="currentColor"/>
+        <circle cx="188" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="188" cy="74" r="5" fill="currentColor"/>
+      </symbol>
+      <symbol id="car-sedan" viewBox="0 0 240 100">
+        <path d="M14 72 L20 50 Q26 40 40 38 L66 24 Q78 16 92 16 L146 16 Q160 16 170 26 L192 40 Q210 42 220 52 L226 72 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="14" y1="72" x2="226" y2="72" stroke="currentColor" stroke-width="4"/>
+        <path d="M70 24 L82 38 M92 16 L92 38 M146 16 L146 38 M170 26 L156 38" fill="none" stroke="currentColor" stroke-width="3"/>
+        <line x1="82" y1="38" x2="156" y2="38" stroke="currentColor" stroke-width="3"/>
+        <circle cx="66" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="66" cy="74" r="5" fill="currentColor"/>
+        <circle cx="178" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="178" cy="74" r="5" fill="currentColor"/>
+      </symbol>
+      <symbol id="car-hatch" viewBox="0 0 240 100">
+        <path d="M28 74 L32 54 Q36 44 48 42 L66 28 Q74 20 86 20 L150 20 Q160 20 166 28 L180 44 Q194 46 200 54 L204 74 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="28" y1="74" x2="204" y2="74" stroke="currentColor" stroke-width="4"/>
+        <path d="M70 28 L80 42 M86 20 L86 42 M150 20 L150 42 M166 28 L156 42" fill="none" stroke="currentColor" stroke-width="3"/>
+        <line x1="80" y1="42" x2="156" y2="42" stroke="currentColor" stroke-width="3"/>
+        <circle cx="70" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="70" cy="76" r="4.5" fill="currentColor"/>
+        <circle cx="164" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="164" cy="76" r="4.5" fill="currentColor"/>
+      </symbol>
+      <symbol id="car-kei" viewBox="0 0 240 100">
+        <path d="M30 74 L30 34 Q30 22 42 22 L192 22 Q206 22 210 34 L216 46 Q220 50 220 58 L220 74 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="30" y1="74" x2="220" y2="74" stroke="currentColor" stroke-width="4"/>
+        <line x1="30" y1="42" x2="210" y2="42" stroke="currentColor" stroke-width="3"/>
+        <line x1="80" y1="42" x2="80" y2="22" stroke="currentColor" stroke-width="3"/>
+        <line x1="135" y1="42" x2="135" y2="22" stroke="currentColor" stroke-width="3"/>
+        <line x1="188" y1="42" x2="188" y2="22" stroke="currentColor" stroke-width="3"/>
+        <circle cx="66" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="66" cy="76" r="4.5" fill="currentColor"/>
+        <circle cx="182" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="182" cy="76" r="4.5" fill="currentColor"/>
+      </symbol>
+    </svg>
 
-<!-- tuning-fees-section -->
-<section class="tuning-fees-section" id="tuning-fees">
-  <div class="tuning-fees-flag"></div>
+    <div class="tuning-fees-inner">
+      <div class="tuning-fees-header">
+        <span class="tuning-fees-eyebrow">💰 Straightforward Pricing</span>
+        <h2 class="tuning-fees-title">General Tuning Fees</h2>
+        <p class="tuning-fees-subtext">Flat rates by vehicle — no surprises, no hidden charges.</p>
+      </div>
 
-  <!-- Icon library — defined once, reused by every card via <use> -->
-  <svg style="display:none">
-    <symbol id="car-suv" viewBox="0 0 240 100">
-      <path d="M14 72 L18 46 Q22 36 34 34 L52 20 Q58 14 68 14 L168 14 Q178 14 184 22 L200 36 Q216 38 222 48 L226 72 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-      <line x1="6" y1="10" x2="180" y2="10" stroke="currentColor" stroke-width="3"/>
-      <line x1="14" y1="72" x2="226" y2="72" stroke="currentColor" stroke-width="4"/>
-      <path d="M58 20 L58 36 M68 14 L68 36 M168 14 L168 36 M184 22 L172 36" fill="none" stroke="currentColor" stroke-width="3"/>
-      <line x1="58" y1="36" x2="172" y2="36" stroke="currentColor" stroke-width="3"/>
-      <circle cx="62" cy="74" r="16" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="62" cy="74" r="5" fill="currentColor"/>
-      <circle cx="182" cy="74" r="16" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="182" cy="74" r="5" fill="currentColor"/>
-    </symbol>
-    <symbol id="car-van" viewBox="0 0 240 100">
-      <path d="M14 72 L14 32 Q14 16 30 16 L196 16 Q212 16 216 30 L222 44 Q226 48 226 56 L226 72 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-      <line x1="14" y1="72" x2="226" y2="72" stroke="currentColor" stroke-width="4"/>
-      <line x1="14" y1="36" x2="216" y2="36" stroke="currentColor" stroke-width="3"/>
-      <line x1="70" y1="36" x2="70" y2="16" stroke="currentColor" stroke-width="3"/>
-      <line x1="126" y1="36" x2="126" y2="16" stroke="currentColor" stroke-width="3"/>
-      <line x1="182" y1="36" x2="182" y2="16" stroke="currentColor" stroke-width="3"/>
-      <circle cx="58" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="58" cy="74" r="5" fill="currentColor"/>
-      <circle cx="188" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="188" cy="74" r="5" fill="currentColor"/>
-    </symbol>
-    <symbol id="car-sedan" viewBox="0 0 240 100">
-      <path d="M14 72 L20 50 Q26 40 40 38 L66 24 Q78 16 92 16 L146 16 Q160 16 170 26 L192 40 Q210 42 220 52 L226 72 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-      <line x1="14" y1="72" x2="226" y2="72" stroke="currentColor" stroke-width="4"/>
-      <path d="M70 24 L82 38 M92 16 L92 38 M146 16 L146 38 M170 26 L156 38" fill="none" stroke="currentColor" stroke-width="3"/>
-      <line x1="82" y1="38" x2="156" y2="38" stroke="currentColor" stroke-width="3"/>
-      <circle cx="66" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="66" cy="74" r="5" fill="currentColor"/>
-      <circle cx="178" cy="74" r="15" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="178" cy="74" r="5" fill="currentColor"/>
-    </symbol>
-    <symbol id="car-hatch" viewBox="0 0 240 100">
-      <path d="M28 74 L32 54 Q36 44 48 42 L66 28 Q74 20 86 20 L150 20 Q160 20 166 28 L180 44 Q194 46 200 54 L204 74 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-      <line x1="28" y1="74" x2="204" y2="74" stroke="currentColor" stroke-width="4"/>
-      <path d="M70 28 L80 42 M86 20 L86 42 M150 20 L150 42 M166 28 L156 42" fill="none" stroke="currentColor" stroke-width="3"/>
-      <line x1="80" y1="42" x2="156" y2="42" stroke="currentColor" stroke-width="3"/>
-      <circle cx="70" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="70" cy="76" r="4.5" fill="currentColor"/>
-      <circle cx="164" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="164" cy="76" r="4.5" fill="currentColor"/>
-    </symbol>
-    <symbol id="car-kei" viewBox="0 0 240 100">
-      <path d="M30 74 L30 34 Q30 22 42 22 L192 22 Q206 22 210 34 L216 46 Q220 50 220 58 L220 74 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-      <line x1="30" y1="74" x2="220" y2="74" stroke="currentColor" stroke-width="4"/>
-      <line x1="30" y1="42" x2="210" y2="42" stroke="currentColor" stroke-width="3"/>
-      <line x1="80" y1="42" x2="80" y2="22" stroke="currentColor" stroke-width="3"/>
-      <line x1="135" y1="42" x2="135" y2="22" stroke="currentColor" stroke-width="3"/>
-      <line x1="188" y1="42" x2="188" y2="22" stroke="currentColor" stroke-width="3"/>
-      <circle cx="66" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="66" cy="76" r="4.5" fill="currentColor"/>
-      <circle cx="182" cy="76" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="182" cy="76" r="4.5" fill="currentColor"/>
-    </symbol>
-  </svg>
+      <!-- duplicate a .tuning-card block per vehicle; swap the icon id, name, and price -->
+      <div class="tuning-fees-grid">
+        <div class="tuning-card">
+          <div class="tuning-card-badge">
+            <span class="tuning-card-price">8,499<small>/-</small></span>
+            <span class="tuning-card-currency">PKR</span>
+            <span class="tuning-card-only">Only</span>
+          </div>
+          <div class="tuning-card-icon"><svg><use href="#car-suv"/></svg></div>
+          <h3 class="tuning-card-name">Land Cruiser</h3>
+        </div>
+        <div class="tuning-card">
+          <div class="tuning-card-badge">
+            <span class="tuning-card-price">7,499<small>/-</small></span>
+            <span class="tuning-card-currency">PKR</span>
+            <span class="tuning-card-only">Only</span>
+          </div>
+          <div class="tuning-card-icon"><svg><use href="#car-van"/></svg></div>
+          <h3 class="tuning-card-name">Toyota Hiace</h3>
+        </div>
+        <div class="tuning-card">
+          <div class="tuning-card-badge">
+            <span class="tuning-card-price">7,999<small>/-</small></span>
+            <span class="tuning-card-currency">PKR</span>
+            <span class="tuning-card-only">Only</span>
+          </div>
+          <div class="tuning-card-icon"><svg><use href="#car-sedan"/></svg></div>
+          <h3 class="tuning-card-name">Honda Civic</h3>
+        </div>
+        <div class="tuning-card">
+          <div class="tuning-card-badge">
+            <span class="tuning-card-price">5,499<small>/-</small></span>
+            <span class="tuning-card-currency">PKR</span>
+            <span class="tuning-card-only">Only</span>
+          </div>
+          <div class="tuning-card-icon"><svg><use href="#car-sedan"/></svg></div>
+          <h3 class="tuning-card-name">Altis Grande</h3>
+        </div>
+        <div class="tuning-card">
+          <div class="tuning-card-badge">
+            <span class="tuning-card-price">4,499<small>/-</small></span>
+            <span class="tuning-card-currency">PKR</span>
+            <span class="tuning-card-only">Only</span>
+          </div>
+          <div class="tuning-card-icon"><svg><use href="#car-hatch"/></svg></div>
+          <h3 class="tuning-card-name">Suzuki Alto</h3>
+        </div>
+        <div class="tuning-card">
+          <div class="tuning-card-badge">
+            <span class="tuning-card-price">4,499<small>/-</small></span>
+            <span class="tuning-card-currency">PKR</span>
+            <span class="tuning-card-only">Only</span>
+          </div>
+          <div class="tuning-card-icon"><svg><use href="#car-kei"/></svg></div>
+          <h3 class="tuning-card-name">Suzuki Every</h3>
+        </div>
+      </div>
 
-  <div class="tuning-fees-inner">
-    <div class="tuning-fees-header">
-      <span class="tuning-fees-eyebrow">💰 Straightforward Pricing</span>
-      <h2 class="tuning-fees-title">General Tuning Fees</h2>
-      <p class="tuning-fees-subtext">Flat rates by vehicle — no surprises, no hidden charges.</p>
+      <p class="tuning-fees-note">Prices cover general EFI tuning only — other vehicle models quoted on inspection.</p>
     </div>
-
-    <div class="tuning-fees-grid">
-      <!-- 🔧 duplicate this block per vehicle — swap the icon id, name, and price -->
-      <div class="tuning-card">
-        <div class="tuning-card-badge">
-          <span class="tuning-card-price">8,499<small>/-</small></span>
-          <span class="tuning-card-currency">PKR</span>
-          <span class="tuning-card-only">Only</span>
-        </div>
-        <div class="tuning-card-icon"><svg><use href="#car-suv"/></svg></div>
-        <h3 class="tuning-card-name">Land Cruiser</h3>
-      </div>
-
-      <div class="tuning-card">
-        <div class="tuning-card-badge">
-          <span class="tuning-card-price">7,499<small>/-</small></span>
-          <span class="tuning-card-currency">PKR</span>
-          <span class="tuning-card-only">Only</span>
-        </div>
-        <div class="tuning-card-icon"><svg><use href="#car-van"/></svg></div>
-        <h3 class="tuning-card-name">Toyota Hiace</h3>
-      </div>
-
-      <div class="tuning-card">
-        <div class="tuning-card-badge">
-          <span class="tuning-card-price">7,999<small>/-</small></span>
-          <span class="tuning-card-currency">PKR</span>
-          <span class="tuning-card-only">Only</span>
-        </div>
-        <div class="tuning-card-icon"><svg><use href="#car-sedan"/></svg></div>
-        <h3 class="tuning-card-name">Honda Civic</h3>
-      </div>
-
-      <div class="tuning-card">
-        <div class="tuning-card-badge">
-          <span class="tuning-card-price">5,499<small>/-</small></span>
-          <span class="tuning-card-currency">PKR</span>
-          <span class="tuning-card-only">Only</span>
-        </div>
-        <div class="tuning-card-icon"><svg><use href="#car-sedan"/></svg></div>
-        <h3 class="tuning-card-name">Altis Grande</h3>
-      </div>
-
-      <div class="tuning-card">
-        <div class="tuning-card-badge">
-          <span class="tuning-card-price">4,499<small>/-</small></span>
-          <span class="tuning-card-currency">PKR</span>
-          <span class="tuning-card-only">Only</span>
-        </div>
-        <div class="tuning-card-icon"><svg><use href="#car-hatch"/></svg></div>
-        <h3 class="tuning-card-name">Suzuki Alto</h3>
-      </div>
-
-      <div class="tuning-card">
-        <div class="tuning-card-badge">
-          <span class="tuning-card-price">4,499<small>/-</small></span>
-          <span class="tuning-card-currency">PKR</span>
-          <span class="tuning-card-only">Only</span>
-        </div>
-        <div class="tuning-card-icon"><svg><use href="#car-kei"/></svg></div>
-        <h3 class="tuning-card-name">Suzuki Every</h3>
-      </div>
-    </div>
-
-    <p class="tuning-fees-note">Prices cover general EFI tuning only — other vehicle models quoted on inspection.</p>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </section>
 
   <!-- CONTACT + APPOINTMENT -->
   <section id="contact">
     <h2 class="section-title">Contact Us</h2>
 
     <div class="contact-grid">
-
       <div class="appointment-left contact-appointment">
         <h2>Schedule Your Appointment Today</h2>
-
-        <p class="call-text">
-          Call: <a href="tel:+923410576603" class="call-text-link">+92 341 0576603</a>
-        </p>
-
-        <p class="sub-text">
-          Your Automotive Repair &amp; Maintenance Service Specialist
-        </p>
-        <a href="tel:+923410576603" class="btn appointment-btn" style="text-decoration: none; color: white;">BOOK AN APPOINTMENT</a>
+        <p class="call-text">Call: <a href="tel:+923410576603" class="call-text-link">+92 341 0576603</a></p>
+        <p class="sub-text">Your Automotive Repair &amp; Maintenance Service Specialist</p>
+        <a href="tel:+923410576603" class="btn appointment-btn" style="text-decoration:none;color:white;">BOOK AN APPOINTMENT</a>
       </div>
 
       <div class="workshop-info">
-
         <div class="timing-card">
           <div class="timing-card-head">
             <div class="timing-icon">🕒</div>
             <h3>Workshop Timing</h3>
           </div>
-
-          <div class="timing-row">
-            <span>Monday - Thursday, Saturday-Sunday</span>
-            <strong>9:00 AM - 9:00 PM</strong>
-          </div>
-          <div class="timing-row">
-            <span>Friday</span>
-            <strong>Closed</strong>
-          </div>
-
+          <div class="timing-row"><span>Monday - Thursday, Saturday-Sunday</span><strong>9:00 AM - 9:00 PM</strong></div>
+          <div class="timing-row"><span>Friday</span><strong>Closed</strong></div>
           <div class="status-badge" id="statusBadge">
             <span class="status-dot" id="statusDot"></span>
             <span id="statusText">Checking...</span>
@@ -1236,51 +702,29 @@
         <div class="social-card">
           <h3>Follow Our Work</h3>
           <p>See real repairs & workshop moments on our socials.</p>
-
           <div class="social-icons">
-            <a href="https://www.tiktok.com/@farhanmughalautoelectrician" target="_blank" rel="noopener"
-              class="social-icon tiktok" aria-label="Follow us on TikTok">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M16.6 5.82c-1.02-.88-1.66-2.18-1.66-3.62h-3.19v13.4c0 1.62-1.31 2.93-2.93 2.93a2.93 2.93 0 0 1 0-5.86c.29 0 .57.04.83.12V9.4a6.13 6.13 0 0 0-.83-.06 6.15 6.15 0 1 0 6.15 6.15V9.02a8.31 8.31 0 0 0 4.85 1.55V7.38a4.85 4.85 0 0 1-3.22-1.56z" />
-              </svg>
+            <a href="https://www.tiktok.com/@farhanmughalautoelectrician" target="_blank" rel="noopener" class="social-icon tiktok" aria-label="Follow us on TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M16.6 5.82c-1.02-.88-1.66-2.18-1.66-3.62h-3.19v13.4c0 1.62-1.31 2.93-2.93 2.93a2.93 2.93 0 0 1 0-5.86c.29 0 .57.04.83.12V9.4a6.13 6.13 0 0 0-.83-.06 6.15 6.15 0 1 0 6.15 6.15V9.02a8.31 8.31 0 0 0 4.85 1.55V7.38a4.85 4.85 0 0 1-3.22-1.56z"/></svg>
               <span>TikTok</span>
             </a>
-
-            <a href="https://www.instagram.com/farhanmughalautoelectrician" target="_blank" rel="noopener"
-              class="social-icon instagram" aria-label="Follow us on Instagram">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.22.41.56.21.96.47 1.38.89.42.42.68.82.89 1.38.17.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.22-.21.56-.47.96-.89 1.38-.42.42-.82.68-1.38.89-.42.17-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.22-.41-.56-.21-.96-.47-1.38-.89-.42-.42-.68-.82-.89-1.38-.17-.42-.36-1.05-.41-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.22.21-.56.47-.96.89-1.38.42-.42.82-.68 1.38-.89.42-.17 1.05-.36 2.22-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38S.94 3.35.63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13s1.34 1.07 2.13 1.38c.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38s1.07-1.34 1.38-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13S20.65.94 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.85a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z" />
-              </svg>
+            <a href="https://www.instagram.com/farhanmughalautoelectrician" target="_blank" rel="noopener" class="social-icon instagram" aria-label="Follow us on Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.22.41.56.21.96.47 1.38.89.42.42.68.82.89 1.38.17.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.22-.21.56-.47.96-.89 1.38-.42.42-.82.68-1.38.89-.42.17-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.22-.41-.56-.21-.96-.47-1.38-.89-.42-.42-.68-.82-.89-1.38-.17-.42-.36-1.05-.41-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.22.21-.56.47-.96.89-1.38.42-.42.82-.68 1.38-.89.42-.17 1.05-.36 2.22-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38S.94 3.35.63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13s1.34 1.07 2.13 1.38c.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38s1.07-1.34 1.38-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13S20.65.94 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.85a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
               <span>Instagram</span>
             </a>
           </div>
         </div>
-
       </div>
-
     </div>
 
-    <!-- <div class="map full-map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3340.4890685774376!2d73.7391439!3d33.1487851!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391fed1c2444ab9f%3A0xabcddce2251e5d32!2sFarhan%20Mughal%20Auto%20Electrician!5e0!3m2!1sen!2s!4v1781774869383!5m2!1sen!2s"
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div> -->
-
-    <!-- INTERACTIVE MAP (MapLibre) — richer alternative to the embed above,
-         with a live open/closed marker popup and directions button -->
-         <div class="shop-map-v2">
-          <div class="shop-map-header">
-            <div>
-              <h3>Find Us Live</h3>
-              <p>Sector F3, Main Kotli Road, Mirpur, New Mirpur City, 10250</p>
-              <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving"
-                 target="_blank" rel="noopener noreferrer" class="btn outline directions-link">
-                Get directions to the workshop
-              </a>
-            </div>
+    <!-- Interactive map (MapLibre). The "Get directions" link above works
+         with zero JS dependency; the map is a richer, optional layer on top. -->
+    <div class="shop-map-v2">
+      <div class="shop-map-header">
+        <div>
+          <h3>Find Us Live</h3>
+          <p>Sector F3, Main Kotli Road, Mirpur, New Mirpur City, 10250</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving" target="_blank" rel="noopener noreferrer" class="btn outline directions-link">Get directions to the workshop</a>
+        </div>
         <div class="shop-map-controls">
           <button type="button" class="map-ctrl-btn" id="mapZoomIn" aria-label="Zoom in">+</button>
           <button type="button" class="map-ctrl-btn" id="mapZoomOut" aria-label="Zoom out">−</button>
@@ -1289,94 +733,42 @@
       </div>
       <div id="shopMap" class="shop-map-canvas"></div>
     </div>
-
   </section>
 
-  <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" class="whatsapp-float"
-    target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
-      <path
-        d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.77-1.833A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.354l-.355-.21-4.61 1.088 1.104-4.49-.232-.368A9.71 9.71 0 0 1 5.25 15c0-5.937 4.816-10.75 10.754-10.75 5.937 0 10.746 4.813 10.746 10.75 0 5.938-4.809 10.75-10.746 10.75zm5.895-8.05c-.322-.161-1.905-.94-2.2-1.048-.295-.108-.51-.161-.724.161-.214.322-.83 1.048-1.018 1.263-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.59-1.598-.957-.853-1.603-1.907-1.791-2.229-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.214-.322.322-.537.107-.215.053-.403-.027-.564-.08-.161-.724-1.745-.992-2.39-.261-.628-.526-.543-.724-.553l-.617-.011c-.215 0-.564.08-.859.403-.295.322-1.126 1.1-1.126 2.684 0 1.584 1.153 3.115 1.314 3.33.161.215 2.267 3.463 5.494 4.858.768.332 1.367.53 1.834.678.771.245 1.472.21 2.027.128.618-.092 1.905-.78 2.174-1.532.268-.752.268-1.397.188-1.532-.08-.134-.295-.215-.617-.376z" />
+      <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.77-1.833A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 0 1-4.95-1.354l-.355-.21-4.61 1.088 1.104-4.49-.232-.368A9.71 9.71 0 0 1 5.25 15c0-5.937 4.816-10.75 10.754-10.75 5.937 0 10.746 4.813 10.746 10.75 0 5.938-4.809 10.75-10.746 10.75zm5.895-8.05c-.322-.161-1.905-.94-2.2-1.048-.295-.108-.51-.161-.724.161-.214.322-.83 1.048-1.018 1.263-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.59-1.598-.957-.853-1.603-1.907-1.791-2.229-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.214-.322.322-.537.107-.215.053-.403-.027-.564-.08-.161-.724-1.745-.992-2.39-.261-.628-.526-.543-.724-.553l-.617-.011c-.215 0-.564.08-.859.403-.295.322-1.126 1.1-1.126 2.684 0 1.584 1.153 3.115 1.314 3.33.161.215 2.267 3.463 5.494 4.858.768.332 1.367.53 1.834.678.771.245 1.472.21 2.027.128.618-.092 1.905-.78 2.174-1.532.268-.752.268-1.397.188-1.532-.08-.134-.295-.215-.617-.376z"/>
     </svg>
   </a>
 
+  <!-- STICKY MOBILE ACTION BAR — plain anchors, no JS dependency -->
+  <div class="action-bar" role="group" aria-label="Contact Farhan Mughal Auto Electrician">
+    <a href="tel:+923410576603" class="action-bar__item action-bar__item--call" data-loc="sticky"><span aria-hidden="true">📞</span><span>Call</span></a>
+    <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue" target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky"><span aria-hidden="true">💬</span><span>WhatsApp</span></a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving" target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky"><span aria-hidden="true">📍</span><span>Directions</span></a>
+  </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
-
       <div>
         <div class="footer-title">Farhan Mughal Auto Electrician</div>
         <p>Trusted car repair service with expert mechanics.</p>
       </div>
-
       <div>
         <div class="footer-title">Location</div>
         <p>Sector F3, Main Kotli Road, Mirpur, New Mirpur City, 10250</p>
       </div>
-
       <div>
         <div class="footer-title">Contact</div>
         <p><a href="tel:+923410576603" class="footer-phone-link">+92 341 0576603</a></p>
       </div>
-
     </div>
-
-    <div class="footer-bottom">
-      © 2026 Farhan Mughal Auto Electrician
-    </div>
+    <div class="footer-bottom">© 2026 Farhan Mughal Auto Electrician</div>
   </footer>
 
-  <!-- MapLibre GL JS library (must load before the map init script below) -->
+  <!-- defer preserves load order: MapLibre finishes before script.js runs,
+       since script.js checks for maplibregl at the top level. -->
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
   <script src="script.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- STICKY MOBILE ACTION BAR — always-visible Call / WhatsApp / Directions.
-       Plain anchors only, no JS dependency, works even if script.js fails. -->
-  <div class="action-bar" role="group" aria-label="Contact Farhan Mughal Auto Electrician">
-    <a href="tel:+923410576603" class="action-bar__item action-bar__item--call" data-loc="sticky">
-      <span aria-hidden="true">📞</span>
-      <span>Call</span>
-    </a>
-    <a href="https://wa.me/923410576603?text=Hi%20I%20need%20help%20with%20my%20car%20issue"
-       target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky">
-      <span aria-hidden="true">💬</span>
-      <span>WhatsApp</span>
-    </a>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=33.129338,73.796815&travelmode=driving"
-       target="_blank" rel="noopener noreferrer" class="action-bar__item" data-loc="sticky">
-      <span aria-hidden="true">📍</span>
-      <span>Directions</span>
-    </a>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-
-
 </html>
