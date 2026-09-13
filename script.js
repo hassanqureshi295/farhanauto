@@ -89,35 +89,58 @@
 
  observer.observe(video);
 
- const menuToggle = document.getElementById("menuToggle");
- const sidebar = document.getElementById("sidebar");
- const overlay = document.getElementById("overlay");
- const closeBtn = document.getElementById("closeBtn");
+ (function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
 
- function openMenu() {
-   sidebar.classList.add("open");
-   overlay.classList.add("show");
-   document.body.classList.add("menu-open");
-   sidebar.setAttribute("aria-hidden", "false");
- }
+  // If any required piece is missing, log it clearly and stop — but don't
+  // let it silently kill every other feature further down in this file.
+  if (!menuToggle || !sidebar || !overlay || !closeBtn) {
+    console.error("Mobile menu: one or more required elements missing", {
+      menuToggle, sidebar, overlay, closeBtn,
+    });
+    return;
+  }
 
- function closeMenu() {
-   sidebar.classList.remove("open");
-   overlay.classList.remove("show");
-   document.body.classList.remove("menu-open");
-   sidebar.setAttribute("aria-hidden", "true");
- }
+  function openMenu() {
+    sidebar.classList.add("open");
+    overlay.classList.add("show");
+    document.body.classList.add("menu-open");
+    sidebar.removeAttribute("inert");
+    sidebar.setAttribute("aria-hidden", "false");
+    menuToggle.setAttribute("aria-expanded", "true");
+    closeBtn.focus();
+  }
 
- menuToggle.addEventListener("click", openMenu);
- closeBtn.addEventListener("click", closeMenu);
- closeBtn.addEventListener("keydown", (e) => {
-   if (e.key === "Enter" || e.key === " ") closeMenu();
- });
- overlay.addEventListener("click", closeMenu);
+  function closeMenu() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+    document.body.classList.remove("menu-open");
+    sidebar.setAttribute("aria-hidden", "true");
+    sidebar.setAttribute("inert", "");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.focus();
+  }
 
- sidebar.querySelectorAll("a").forEach((link) => {
-   link.addEventListener("click", closeMenu);
- });
+  menuToggle.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", closeMenu);
+  closeBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") closeMenu();
+  });
+  overlay.addEventListener("click", closeMenu);
+
+  sidebar.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      setTimeout(closeMenu, 0);
+    });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sidebar.classList.contains("open")) closeMenu();
+  });
+})();
 
   /* WORKSHOP OPEN/CLOSED STATUS
     Source of truth: 0 = Sunday … 6 = Saturday. null = closed all day.
